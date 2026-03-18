@@ -1,0 +1,154 @@
+# Discussion
+
+The multi‑environment evaluation of NLL × oat mixed cropping demonstrated that total NLL grain yield was maintained across five European locations, while several indicators showed an improved temporal and spatial grain-yield stability relative to the component pure stands. The productivity indices clarify why total yield was preserved despite the strong oat dilution. The LER did not differ significantly from unity, a result attributed to the high yield and therefore high LER variability across the years, resulting in no statistical differences. Additionally, non-elevated LERs of mixed crops strongly focussed on one component (i.e. NLLs) goes in line with former metaanalytical on replacement designs [@zustovi2024], evidencing the LER remaining non-elevated. In contrast, the elevated CPR highlighted interactive effects: the CPRs of the oat varieties were strongly elevated above unity and the CPR of the NLL varieties remained close to unity, yielding a high total CPR across all mixtures. Hence, in the mixture the cereal captured otherwise unused resources without suppressing the legume, supporting theoretical work that niche complementarity rather than simple compensation underlies mixture advantages [@demie2022]. Presumably, this effect is particularly pronounced for the oat crop due to their low sowing proportion, which increases each oat plant's access to resources. And conversely, the niche complementarity benefits the NLL in mixture to a lesser extent, since they were sown at 90% of the pure stand's original density [@jensen1996; @hauggaard-nielsen2001]. Across all varieties, the LER was consistetly observed to remain at it's reference level of one, while the oat and total CPR values were consistently elevated above one, indicating a system-level (global) advantage of mixed cropping. This pattern of maintained LER- and elevated CPR_oat and total CPR-values across all varieties investigated highlights a global mixed-cropping effect of said metrics, which is agnostic to variety-pairing. This reinforces the evidence that the overall mixed-cropping effect outweighs cultivar-specific effects, as reported for barley-pea mixtures and for maize in maize-cowpea mixtures [@hauggaard-nielsen2001; @watiki1993].
+
+Using either fertilized or unfertilized oat monocultures as the reference for LER led to the same conclusion: LER did not differ significantly between baselines. This insensitivity likely reflects substantial spatiotemporal variance in yield across all environment-years and the low sowing proportion of oat in the mixtures, which diminishes the weight of the oat component in the summed LER, thus limiting statistical power. In contrast, both total CPR and oat‑specific CPR were higher when mixtures were benchmarked against unfertilized oat stands, revealing a fertilizer‑mediated gain in the performance of pure oat stands. Because CPR explicitly scales yields by the sown proportion of each species, it provides a proportion‑corrected measure and is therefore more sensitive than LER to management effects under imbalanced mixtures. These findings are consistent with the prior report of @baxevanos2020 that using unfertilized monocultures as references can yield larger estimates of intercropping advantage than using fertilized references.
+
+While the static metric (CV) did not detect significant differences in grain‑yield stability, the two dynamic approaches, the Finlay-Wilkinson slope ($b_{1}$) and WAAS, revealed clear contrasts among treatments. In pure stands, fertilized oat Lion combined an above‑average responsiveness to environments (slope $b_{1} > 1$) with low dispersion around the regression, indicating a predictable response in both favorable and unfavorable conditions. Fertilization enhanced the stability of oat monocultures: in the present study, fertilized Lion and Troll showed significantly higher grain-yield stability (smaller WAAS) than their unfertilized counterparts, consistent with the findings of @silva2016. Most mixted stands exhibited elevated responsiveness to the environmental conditions ($b_{1} > 1$), while the most stable mixed treatments exhibited $b_{1} \approx 1$, coupled to low sensitivities to the environmental conditions WAAS. Such stability in cereal–pulse mixtures is commonly attributed to differential species responses and complementarity that buffer environmental variation and reduce $G \times E$ interaction, resulting in more stable yields amongst selected combinations [@raseduzzaman2017].
+
+The increased dynamic grain-yield stability observed for mixed cropping in this study extends the findings of @weih2021 by showing that under a pulse-focussed replacement design (NLL × oat), mixture stability did not only match, but surpassed the pure‑crop benchmarks on dynamic grain-yield stability. This pattern re-affirms the findings by @raseduzzaman2017, that replacement-designed mixed crops of cereals and pulses elevate the grain-yield stability across environments. Notably, the most stable mixtures, namely Bison × Probor and Troll × Jowisz, emerged even though neither corresponding sole crop ranked among the most stable, underscoring that stability must be assessed at the mixture level rather than inferred from component monocultures. By quantifying stability with complementary dynamic metrics (Finlay–Wilkinson slope, $b_{1}$, and WAAS), the results of this study show that the stability advantage of mixtures is not confined to balanced designs; it also holds under replacement designs that emphasize the NLL component.
+
+# Conclusion
+
+This study focusses on the grain-yield performance and stability of pulse-cereal mixed cropping with regards to both pure stands and in mixtures. Further aspects of mixed cropping, such as economic viability, sowing methods, plant protection, threshing and processing and quality of harvested seeds need to be addressed as well. The patterns observed in the present study demonstrate that the right variety mixtures improve grain-yield stability of both the NLL and oat while maintaining the crop performance and land use, opening opportunities for tailoring mixtures to agri-environmental risk profiles. Moreover, the robust yield-stability advantage of mixtures across environment-years, which differed six‑fold in seasonal precipitation, suggests that mixed cropping can effectively hedge against increasing climate variability, aligning with policy aims to broaden on‑farm plant protein production. Hence, strategic variety pairing within mixed cropping emerges as an expedient lever to combine high crop yield and maintain land use performance while improving the production's resilience. These findings strengthen the evidence base for incorporating cereals into pulse-centric cropping strategies to enhance resilience under climate uncertainty and mitigate the pulses' yield instability.
+
+# CRediT authorship contribution statement
+**Schlup Yannik**: Conceptualisation, investigation, data assembly, statistical analysis, methodology, project administration, resources, software, visualisation, writing, editing. **Andrea Gallehr, Kathrin Neubeck, Matthias Heinrich Herrmann, Radivoje Jevtić, Selma Schurack, Vesna Župunski**: Conceptualisation, investigation, data assembly, project administration, resources, review and editing. **Lukas Graz**: Statistical analysis, software, visualisation, review. **Johan Six**: Review and editing. **Susanne Vogelgsang**: Conceptualisation, funding acquisition, methodology, project administration, resources, review and editing.
+
+# Funding
+This project was carried out within the Horizon 2020 funded project CROPDIVA (ID: 101000847). We gratefully acknowledge the financial support that made this study possible.
+
+# Declaration of Competing Interest
+The authors declare that they have no known personal relationships or competing financial interests that could have influenced the work reported in this paper.
+
+# Declaration of generative AI and AI-assisted technologies in the writing process.
+During the preparation of this work the authors used GPT-4 (OpenAI, California, USA) to improve the structure and efficiency of the code to produce figures and GPT-o3pro (OpenAI, California, USA) in support of writing the abstract, introduction and discussion. After using this tool/service, the authors reviewed and edited the content as needed and take full responsibility for the created content.
+
+# Data and analytical code
+The analytical code and data are available under the link: PLEASE PASTE LINK HERE (once the paper is accepted).
+
+# Acknowledgments
+We gratefully acknowledge the field technicians for their invaluable expertise in the cultivation of NLLs and oats as well as the interns and MSc students for their assistance in the field and laboratory work.
+
+# Supplemental materials
+
+Formula 1 - Eberhard-Russell regression for plot-level data
+$$
+Y_{ij} = \mu_i + b_1i\, I_j + \delta_{ij} + \varepsilon_{ij} \tag{1}
+$$
+
+Where:
+
+$Y_{ij}$ is the observed yield of the $i^{th}$ treatment in the $j^{th}$ environment,
+
+$\mu_i$ is the mean yield of the $i^{th}$ treatment across all environments,
+  
+$b_{1i}$ is the Finlay–Wilkinson regression coefficient representing treatment $i$’s responsiveness to the environments,
+
+$I_j$ is the environmental index, calculated as the mean yield of environment $j$ minus the grand mean across environments,
+
+$\delta_{ij}$​ is the deviation from the linear response in environment $j$ used to compute the deviation variance $S^2_{di}$, and
+
+$\varepsilon_{ij}$ is the residual term.
+
+Formula 2 - Eberhart–Russell deviation variance
+
+$$
+S^2_{di} = \frac{\sum_{j=1}^{E} \delta_{ij}^{\,2}}{E - 2} \tag{2}
+$$
+
+Where:
+
+$\delta_{ij} = Y_{ij} - (\mu_i + b_{1i}I_j)$ are the deviations from the regression line and
+
+$E$ are the number of environments.
+
+::: {.table-caption #tbl-sites}
+Table S1: Field characteristics and husbandry measures per location and year (environment-year).
+:::
+| Location and year |Latitude (°N)|Longitude (°E)| Pre-crop    | Pre-pre-crop      | Sowing       | Weeding 1            | Weeding 2            | Oat fertilisation (kgNha^-1^)|Pest intervention |Harvest| Soil-type   |
+|-------------------|-------------|--------------|-------------|-------------------|--------------|----------------------|----------------------|--------------------------|------------------|-----------|-------------|
+| Bad Vilbel 2022   |   50.2      |  8.6         |   -         |   -               | March 29     | April 28             | May 5                | 43                       |     -            | July 14   |  Sandy loam |
+| Bad Vilbel 2023   |   50.2      |  8.8         |   -         |   -               | April 06     | -                    |    -                 | 40                       |     -            | August 1  |  Sandy loam |
+| Bad Vilbel 2024   |   50.2      |  8.7         |   -         |   -               | April 24     | -                    |    -                 | 35                       |     -            | July 29   |  Sandy loam |
+|Gross Lüsewitz 2022|  54.1       |    13.3      | Lupin       | Lolium            | March 31     | April 5 (Stomp Aqua) |                      | 40                       |    -             | August 17 |  Sandy loam |
+|Gross Lüsewitz 2023|  54.1       |    13.3      | Lupin       | Lolium            | April 5      | -                    |                      | 40                       |    -             | August 22 |  Sandy loam |
+|Gross Lüsewitz 2024|  54.1       |    13.3      | Lolium      | Winter rye        | March 22     | March 27 (Stomp Aqua)|                      | 40                       |    -             | August 8  |  Sandy loam |
+|Novi Sad 2023      | 45.3        |  19.8        | Maize       | Winter wheat      | May 5        | manual               | manual               | 60               |Vantex 60CS against Oulema ssp. | July 28 |Loamy chernozem|
+|Novi Sad 2024      | 45.3        |  19.8        | Soybean     | Maize             | March 30     | manual               | manual               | 60               |Vantex 60CS against Oulema ssp. | July 19 |Loamy chernozem|
+|Novi Sad 2025      | 45.3        |  19.8        | Soybean     | Maize             | February 28  | manual               | manual               | 60               |Vantex 60CS against Oulema ssp. | July  1 |Loamy chernozem|
+| Reckenholz 2022   | 47.4        | 8.5          | Silage maize| Flower strip      | March 4      | March 21 (mechanical)| April 5 (mechanical) | 27.5                     | -                | July 12   | Loamy clay  |
+| Reckenholz 2023   | 47.4        | 8.5          | Silage maize| Artificial pasture| February 16  |February 22 (mechanical)|April 4 (mechanical)| 30                       | -                | July 10   | Loamy clay  |
+| Seegräben 2022    | 47.3        | 8.9          | Silage maize| Winter wheat      | March 10     |March 17 (mechanical)| March 31 (mechanical) | 27.5                     | -                | July 19   | Sandy loam  |
+| Seegräben 2023    | 47.4        | 8.9          | Silage maize| Winter barley     | February 22  |March 1 (mechanical)| April 5 (mechanical)   | 30                       | -                | July 19   | Sandy loam  |
+
+
+
+::: {.table-caption #tbl-mdls}
+Table S2: Statistical models deployed to analyse the data. The characteristics explain the details of the model. Each response variable (attribute) in the present study was analysed with one or more of the models listed in the table. To analyse the effect of canopy height difference onto the narrow-leaved lupin proportion and the total yield, model M3 was adapted replacing the predictor treatment with canopy height difference.
+:::
+| Model    | Characteristics                                 |
+|----------|-------------------------------------------------|
+| M1       | This model answered if the response variable differed in mixtures and pure NLLs (or analogously oats) across all varieties. It performed an ANOVA using the NLL/oat-variety and the binary variable stand = mixed. This model considered each species separately. |
+| M2       | M2 answered if the response variable differed in mixtures and pure NLLs or oats. Here, this was achieved by computing the linear contrasts of each pure NLL/oat variety with the mean of its respective mixtures. This model considered each species separately. |
+| M3       | On the subset of only mixed plots, M3 performed a two-way (mixed) ANOVA with the factors oat variety and NLL variety (adjusting for location, year, and block). This model considered both species together. Further, M3 performed post-hoc comparisons of the treatments and locations. |
+| M4       | M4 answered the question, if the estimated value of the treatments with mixed stands (e.g. the land equivalent ratio) was significantly different from an expected value (e.g. LER = 1) after a Bonferroni correction (with the respective 12 coefficients). |
+
+::: {.table-caption #tbl-yield-locationyear}
+Table S3: Year × location median yields and median absolute deviations (tha^-1^) aggregated across blocks.
+:::
+| Treatment | Gross 2022 | Gross 2023 | Gross 2024 | Novi 2022 | Novi 2023 | Novi 2024 | Re 2022 | Re 2023 | Seegr 2022 | Seegr 2023 | Vilbel 2022 | Vilbel 2023 | Vilbel 2024 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Bison | 3.83 ± 0.01 | 2.30 ± 0.08 | 4.85 ± 0.12 | 2.95 ± 0.22 | 3.33 ± 0.11 | 4.38 ± 0.06 | 4.51 ± 0.69 | 3.33 ± 0.28 | 5.35 ± 0.35 | 3.06 ± 0.21 | 2.81 ± 0.12 | 0.77 ± 0.14 | 1.96 ± 0.19 |
+| Lion | 3.39 ± 0.17 | 3.24 ± 0.02 | 4.58 ± 0.15 | 2.95 ± 0.17 | 4.56 ± 0.17 | 4.22 ± 0.22 | 4.93 ± 0.35 | 3.75 ± 0.21 | 5.42 ± 0.07 | 3.13 ± 0.14 | 3.24 ± 0.52 | 1.60 ± 0.00 | 2.70 ± 0.33 |
+| Troll | 3.95 ± 0.41 | 2.05 ± 0.15 | 4.75 ± 0.37 | 3.17 ± 0.17 | 3.67 ± 0.50 | 3.73 ± 0.23 | 3.82 ± 0.49 | 3.47 ± 0.14 | 4.79 ± 0.42 | 2.71 ± 0.07 | 2.46 ± 0.34 | 1.22 ± 0.28 | 2.11 ± 0.39 |
+| Bison_N | 4.88 ± 0.31 | 2.52 ± 0.08 | 5.07 ± 0.47 | 3.38 ± 0.34 | 3.55 ± 0.34 | 4.33 ± 0.06 | 4.93 ± 0.28 | 4.79 ± 0.42 | 6.04 ± 0.42 | 4.03 ± 0.21 | 3.31 ± 0.13 | 1.33 ± 0.52 | 2.03 ± 0.47 | 
+| Lion_N | 4.29 ± 0.25 | 2.60 ± 0.59 | 4.17 ± 0.71 | 2.95 ± 0.11 | 4.55 ± 0.34 | 4.17 ± 0.39 | 5.07 ± 0.63 | 5.69 ± 0.07 | 6.53 ± 0.07 | 4.10 ± 0.14 | 3.02 ± 0.23 | 1.62 ± 0.20 | 2.89 ± 0.67 | 
+| Troll_N | 4.27 ± 0.11 | 2.33 ± 0.14 | 4.77 ± 0.08 | 2.83 ± 0.50 | 3.11 ± 0.28 | 4.39 ± 0.28 | 5.42 ± 0.28 | 4.86 ± 0.35 | 5.76 ± 0.21 | 4.10 ± 0.21 | 2.50 ± 0.13 | 1.80 ± 0.03 | 2.51 ± 0.04 | 
+| Lunabor | 2.86 ± 0.15 | 0.22 ± 0.08 | 0.62 ± 0.43 | 0.22 ± 0.00 | 2.50 ± 0.06 | 0.78 ± 0.00 | 3.13 ± 0.14 | 2.22 ± 1.32 | 3.54 ± 0.42 | 3.33 ± 0.07 | 2.44 ± 0.20 | 1.39 ± 0.08 | 0.33 ± 0.15 | 
+| Probor | 2.25 ± 0.15 | 0.10 ± 0.05 | 0.35 ± 0.14 | 0.39 ± 0.05 | 1.50 ± 0.22 | 0.83 ± 0.16 | 3.61 ± 0.00 | 1.81 ± 1.25 | 3.19 ± 0.21 | 3.33 ± 0.42 | 2.26 ± 0.10 | 0.88 ± 0.12 | 0.43 ± 0.15 | 
+| Jowisz | 2.47 ± 0.13 | 0.40 ± 0.05 | 0.67 ± 0.46 | 0.28 ± 0.06 | 1.73 ± 0.11 | 0.89 ± 0.22 | 3.26 ± 0.14 | 1.39 ± 0.14 | 3.68 ± 0.14 | 3.19 ± 0.07 | 2.06 ± 0.10 | 1.02 ± 0.07 | 0.38 ± 0.12 | 
+| Bison × Lunabor | 3.49 ± 0.08 | 0.79 ± 0.33 | 3.18 ± 0.33 | 1.56 ± 0.33 | 2.89 ± 0.17 | 2.33 ± 0.11 | 4.72 ± 0.07 | 3.47 ± 0.56 | 4.31 ± 0.28 | 4.17 ± 0.07 | 2.73 ± 0.07 | 1.47 ± 0.27 | 1.19 ± 0.21 | 
+| Bison × Probor | 3.16 ± 0.16 | 1.01 ± 0.27 | 2.87 ± 0.30 | 1.61 ± 0.12 | 2.45 ± 0.05 | 2.61 ± 0.11 | 3.82 ± 0.35 | 2.64 ± 0.07 | 4.03 ± 0.00 | 4.03 ± 0.07 | 2.72 ± 0.08 | 1.17 ± 0.08 | 0.70 ± 0.28 | 
+| Bison × Jowisz | 3.02 ± 0.16 | 0.63 ± 0.00 | 3.44 ± 0.06 | 1.55 ± 0.16 | 2.62 ± 0.17 | 2.38 ± 0.11 | 3.61 ± 0.14 | 2.50 ± 0.35 | 4.51 ± 0.14 | 3.47 ± 0.21 | 2.69 ± 0.09 | 0.88 ± 0.25 | 0.83 ± 0.21 | 
+| Lion × Lunabor | 3.24 ± 0.18 | 1.21 ± 0.14 | 3.20 ± 0.09 | 1.33 ± 0.00 | 2.95 ± 0.22 | 2.39 ± 0.11 | 4.03 ± 0.35 | 3.96 ± 0.07 | 4.79 ± 0.14 | 3.96 ± 0.07 | 3.11 ± 0.24 | 1.65 ± 0.06 | 1.17 ± 0.36 | 
+| Lion × Probor | 2.90 ± 0.05 | 0.90 ± 0.15 | 1.22 ± 0.00 | 1.50 ± 0.05 | 2.55 ± 0.17 | 2.39 ± 0.17 | 4.17 ± 0.14 | 3.19 ± 0.56 | 4.17 ± 0.00 | 4.10 ± 0.28 | 2.69 ± 0.12 | 1.47 ± 0.20 | 1.28 ± 0.28 | 
+| Lion × Jowisz | 3.08 ± 0.12 | 1.09 ± 0.17 | 3.19 ± 0.00 | 1.44 ± 0.00 | 2.94 ± 0.11 | 2.17 ± 0.11 | 4.24 ± 0.21 | 2.99 ± 0.28 | 4.65 ± 0.14 | 3.75 ± 0.07 | 2.73 ± 0.03 | 0.93 ± 0.03 | 1.11 ± 0.37 | 
+| Troll × Lunabor | 3.22 ± 0.12 | 0.68 ± 0.19 | 3.44 ± 0.45 | 1.17 ± 0.22 | 2.89 ± 0.00 | 2.23 ± 0.00 | 4.51 ± 0.07 | 4.17 ± 0.69 | 4.51 ± 0.21 | 3.96 ± 0.14 | 2.56 ± 0.06 | 1.73 ± 0.02 | 0.95 ± 0.36 | 
+| Troll × Probor | 3.09 ± 0.15 | 0.43 ± 0.21 | 1.00 ± 0.68 | 1.17 ± 0.06 | 2.06 ± 0.39 | 1.89 ± 0.12 | 4.31 ± 0.14 | 3.54 ± 0.56 | 4.17 ± 0.35 | 3.96 ± 0.14 | 2.50 ± 0.10 | 1.35 ± 0.18 | 0.67 ± 0.11 | 
+| Troll × Jowisz | 2.74 ± 0.13 | 0.55 ± 0.42 | 3.36 ± 0.41 | 1.22 ± 0.11 | 2.56 ± 0.17 | 2.11 ± 0.16 | 3.68 ± 0.35 | 3.26 ± 0.49 | 4.44 ± 0.07 | 3.47 ± 0.28 | 2.54 ± 0.09 | 1.03 ± 0.18 | 0.87 ± 0.07 |
+
+::: {.table-caption #tbl-ammi}
+Table S4: The additive main effects and multiplicative interaction (AMMI) model output
+:::
+| Type | Code  | Y   | PC1    | PC2    | PC3    | PC4    | WAAS  | PctResp| PctWAAS | wRes | wWAAS | OrResp | OrWAAS |
+|------|-------|-----|--------|--------|--------|--------|-------|--------|---------|------|-------|--------|--------|
+| GEN  | 10    | 3.0 | 0.081  | 0.270  | -0.250 | 0.069  | 0.081 | 47.0   | 93.0    | 50   | 50    | 6      | 6      |
+| GEN  | 11    | 2.9 | -0.081 | -0.390 | 0.014  | 0.030  | 0.081 | 40.0   | 93.0    | 50   | 50    | 9      | 7      |
+| GEN  | 12    | 2.8 | -0.053 | -0.530 | 0.066  | 0.041  | 0.053 | 36.0   | 97.0    | 50   | 50    | 12     | 3      |
+| GEN  | 13    | 3.1 | 0.084  | 0.060  | -0.055 | 0.170  | 0.084 | 52.0   | 93.0    | 50   | 50    | 4      | 9      |
+| GEN  | 14    | 3.0 | 0.083  | -0.140 | 0.0059 | -0.290 | 0.083 | 47.0   | 93.0    | 50   | 50    | 7      | 8      |
+| GEN  | 15    | 3.0 | -0.063 | -0.230 | -0.110 | -0.059 | 0.063 | 44.0   | 96.0    | 50   | 50    | 8      | 4      |
+| GEN  | 16    | 3.1 | -0.048 | 0.370  | 0.014  | -0.120 | 0.048 | 49.0   | 98.0    | 50   | 50    | 5      | 2      |
+| GEN  | 17    | 2.8 | 0.080  | 0.370  | -0.230 | -0.150 | 0.080 | 38.0   | 94.0    | 50   | 50    | 11     | 5      |
+| GEN  | 18    | 2.8 | -0.032 | -0.120 | -0.075 | 0.061  | 0.032 | 39.0   | 100.0   | 50   | 50    | 10     | 1      |
+| GEN  | 4     | 4.3 | -0.760 | -0.0005| -0.320 | 0.200  | 0.760 | 95.0   | 0.0     | 50   | 50    | 2      | 15     |
+| GEN  | 5     | 4.4 | -0.480 | 0.019  | 0.510  | -0.0085| 0.480 | 100.0  | 38.0    | 50   | 50    | 1      | 10     |
+| GEN  | 6     | 4.0 | -0.490 | 0.260  | 0.190  | -0.120 | 0.490 | 85.0   | 37.0    | 50   | 50    | 3      | 11     |
+| GEN  | 7     | 2.1 | 0.580  | -0.035 | 0.072  | 0.250  | 0.580 | 12.0   | 26.0    | 50   | 50    | 13     | 14     |
+| GEN  | 8     | 1.9 | 0.560  | 0.300  | 0.260  | 0.150  | 0.560 | 4.0    | 28.0    | 50   | 50    | 14     | 13     |
+| GEN  | 9     | 1.8 | 0.550  | -0.210 | -0.097 | -0.240 | 0.550 | 0.0    | 29.0    | 50   | 50    | 15     | 12     |
+| ENV  | Gross | 2.7 | -0.600 | -0.110 | -0.600 | 0.120  | 0.600 | 43.0   | 41.0    | 50   | 50    | 3      | 3      |
+| ENV  | Novi  | 2.5 | -0.740 | -0.370 | 0.500  | 0.058  | 0.740 | 33.0   | 26.0    | 50   | 50    | 4      | 4      |
+| ENV  | Re    | 3.9 | -0.058 | 0.910  | 0.120  | -0.015 | 0.058 | 88.0   | 100.0   | 50   | 50    | 2      | 1      |
+| ENV  | Seegr | 4.2 | 0.420  | -0.230 | -0.065 | -0.490 | 0.420 | 100.0  | 61.0    | 50   | 50    | 1      | 2      |
+| ENV  | Vilbel| 1.7 | 0.980  | -0.200 | 0.045  | 0.320  | 0.980 | 0.0    | 0.0     | 50   | 50    | 5      | 5      |
+
+Appendix A: Hypothesis analysis.
+
+
+
+
+
+
+

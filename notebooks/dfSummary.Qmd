@@ -1,0 +1,24 @@
+---
+title: Data Summary
+author: Lukas Graz
+date: 2024-10-02
+---
+
+```{r}
+library(summarytools)
+# if (!interactive()) setwd("..")
+source("R/DataPrep.R")
+```
+
+
+```{r, results='asis'}
+if (!interactive())
+  dfSummary(D_typed, plain.ascii = FALSE, style = 'grid')
+```
+
+
+```{r}
+# D_typed |> 
+#   subset(select = sapply(D_typed, is.numeric)) |>
+#   sapply(robustbase::mc, na.rm = TRUE) |> hist()
+```

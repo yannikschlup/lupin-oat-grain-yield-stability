@@ -1,0 +1,15 @@
+# Abstract
+
+**Background & aims**
+Pulse-cereal mixtures are promoted to stabilize yields and reduce fertiliser dependence, yet robust multi‑environment evidence for narrow‑leaved lupin (NLL, *Lupinus angustifolius*) × oat (*Avena sativa*) mixed cropping remains scarce. We tested whether NLL × oat mixtures maintain productivity while enhancing grain‑yield stability across five European environments, and how conclusions depend on the fertilized vs unfertilized oat monoculture used as reference for mixed‑cropping indices. 
+
+**Methods**
+A randomized complete block design (four blocks) evaluated three NLL and three oat varieties grown as pure stands (oat both fertilised and unfertilised; NLL unfertilised) and as all nine pairwise mixtures in a replacement design (NLL 90%, oat 10% of pure‑stand density). Trials ran for 13 environment‑years across five European locations (Germany, Switzerland, Serbia). Productivity was summarized with land equivalent ratio (LER) and crop performance ratio (CPR). Yield stability was assessed using (i) the coefficient of variation (CV), (ii) Finlay–Wilkinson regression slope ($b_{1}$) and Eberhart–Russell deviation variance $S^2_{di}$), and (iii) AMMI‑derived Weighted Average of Absolute Scores (WAAS). Mixed‑effects models with robustification supported inference. 
+
+**Results**
+Across environments, LER did not differ from unity (LER = 1) whether fertilized or unfertilized oat monocultures were the reference. By contrast, total CPR and oat‑specific CPR consistently exceeded 1 (mean CPR ≈ 5.3; CPR_N ≈ 4.6), while NLL CPR hovered around 1, indicating system‑level gains driven by the oat component without penalizing NLL. Fertilized references yielded smaller CPR estimates than unfertilized references, as expected. CVs did not separate treatments, but dynamic metrics did: many mixtures and pure stands were environmentally responsive ($b_{1}$), but the most stable combined near‑average responsiveness ($b_{1}$ approx 1)) with very low dispersion and sensitivity to the environmental conditions (Bison × Probor and Troll × Jowisz). Lastly, fertilized oat monocultures were more stable than unfertilized counterparts.
+
+**Conclusions**
+NLL×oat mixtures maintained land‑use efficiency while improving dynamic grain‑yield stability relative to the pure stands of oats and NLL across 13 environment‑years. Proportion‑corrected productivity (CPR) exposed mixture advantages that LER could not. Stability gains arose from reduced environmental sensitivity of the mixture rather than the individual variety, underscoring the need to evaluate mixtures directly rather than inferring stability from monocultures. These results support deploying pulse‑centric cereal–legume mixtures as a pragmatic lever to buffer climate variability while sustaining protein‑rich production. 
+
+**Keywords**: intercropping, narrow-leaved lupin, oat, LER, CPR, Finlay–Wilkinson, AMMI, WAAS, yield stability, genotype × environment. 

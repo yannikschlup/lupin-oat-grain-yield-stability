@@ -1,0 +1,68 @@
+project:
+  type: book
+  output-dir: rendered
+
+# Book metadata
+book:
+  date: now  #Automatically update the date
+  date-format: "YYYY-MM-DD, HH:mm" #Date format
+
+  page-navigation: true  #Enable previous/next page navigation links
+
+  #Chapters to include in the book
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - references.qmd
+
+
+# Language settings (moved to top level)
+lang: en-GB  # British English language setting
+
+# Bibliography settings
+bibliography: "./lupinlibrary.json"
+csl: "./nature.csl"
+
+references:
+  - "./24phdlibrary.json"  # Path to bibliography file
+
+format:
+  # HTML format
+  html:
+    theme: default
+    number-sections: true  # Enable numbered sections
+    toc: true  # Enable table of contents
+    toc-depth: 4  # Number of levels in the TOC
+    # Uncomment to include custom CSS for further styling
+    # css: styles.css
+    
+    # Code formatting options
+    code-fold: true  # Collapse code blocks by default
+    fig-width: 6  # Set figure width in inches
+    fig-height: 4  # Set figure height in inches
+    
+  # PDF format
+  pdf:
+    documentclass: scrreprt  # KOMA-Script LaTeX document class (good for reports)
+    number-sections: true  # Enable numbered sections
+    toc: true  # Enable table of contents
+    toc-depth: 3  # Number of levels in the TOC
+    papersize: a4  # Set paper size to A4 (adjust if needed)
+    geometry: "margin=1in"  # Set general page margins (customizable)
+    fig-width: 6  # Set figure width for PDF
+    fig-height: 4  # Set figure height for PDF
+    
+  # DOCX format
+  docx:
+    toc: true  # Enable table of contents
+    toc-depth: 3  # Number of levels in the TOC
+
+
+# Code execution settings
+execute:
+  echo: true  # Display code in outputs
+  warning: false  # Suppress warnings
+  error: false  # Ignore errors and continue rendering
+
+
+

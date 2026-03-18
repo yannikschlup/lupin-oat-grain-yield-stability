@@ -1,0 +1,164 @@
+# Methods
+
+## Varieties
+
+Three spring NLL and three spring oat varieties were chosen based on the breeders fact sheets and the variety list of the German variety institute [@zotero-521]. Branching, spring-NLLs and early-maturing spring oat varieties were selected to increase the chances of coincidental ripening. The selected, NLL varieties were
+
+- Lunabor, bred by Saatzucht Steinach in Germany
+- Probor, bred by Saatzucht Steinach in Germany
+- Jowisz (synonym: Jupiter), bred by HR Smolic in Poland
+
+The selected, early maturing spring oat varieties were:
+
+- Bison, Hauptsaaten für die Rheinprovinz GmbH, Germany, medium tall
+- Lion, Nordsaat Saatzucht GmbH, Germany, medium tall
+- Troll, Saatzucht Bauer GmbH & Co. KG, Germany, short
+
+## Treatments and experimental design
+The NLL and oat varieties were cultivated as spring crops in pure and mixed stands. The pure oat stands were fertilised according to the local guidelines (Supplemental materials - Table S1). In the mixed stands, each NLL variety was co-cultivated with each oat variety in a replacement design: the NLLs were sown at 90% of their pure stand’s density, whereas the oats, due to their high competitiveness and the focus on the NLL crop, were sown at 10% of their pure stand’s density [@kato-noguchi1994; @bohm] ([Table 1](#tbl_trt)). The sowing amounts were adapted to the germination rate evaluated two weeks before sowing according to the producer's provided germination information.
+
+::: {.table-caption #tbl-trt}
+Treatments of the study: Narrow-leaved lupin and oat varieties, the stand (pure versus mixed), fertilisation, sowing ratios, respective sowing densities and corresponding amount of seeds per hectare. For the two numbers present in the mixed treatments, the first one refers to the narrow-leaved lupins, the second one to the oats. The  sowing density and fertilisation of the oat crop varied depending on the local recommendations.
+:::
+| Treatment        | Stand   | Fertilisation*|Sowing density** (plantsm^-2^)|Amount (kgha^-1^)|
+|------------------|---------|---------------|----------------------------|----------------|
+| Bison            | pure    | no            | 300 - 400                  | 168 - 224      |
+| Lion             | pure    | no            | 300 - 400                  | 121 - 161      |
+| Troll            | pure    | no            | 300 - 400                  | 110 - 147      |
+| Bison            | pure    | yes           | 300 - 400                  | 168 - 224      |
+| Lion             | pure    | yes           | 300 - 400                  | 121 - 161      |
+| Troll            | pure    | yes           | 300 - 400                  | 110 - 147      |
+| Lunabor          | pure    | no            | 120                        | 220            |
+| Probor           | pure    | no            | 120                        | 170            |
+| Jowisz           | pure    | no            | 120                        | 214            |
+| Lunabor × Bison  | mixed   | no            | 108 / 30 - 40              | 198 / 17 - 22  |
+| Lunabor × Lion   | mixed   | no            | 108 / 30 - 40              | 198 / 12 - 16  |
+| Lunabor × Troll  | mixed   | no            | 108 / 30 - 40              | 198 / 11 - 15  |
+| Probor × Bison   | mixed   | no            | 108 / 30 - 40              | 153 / 17 - 22  |
+| Probor × Lion    | mixed   | no            | 108 / 30 - 40              | 153 / 12 - 16  |
+| Probor × Troll   | mixed   | no            | 108 / 30 - 40              | 153 / 11 - 15  |
+| Jowisz × Bison   | mixed   | no            | 108 / 30 - 40              | 193 / 17 - 22  |
+| Jowisz × Lion    | mixed   | no            | 108 / 30 - 40              | 193 / 12 - 16  |
+| Jowisz × Troll   | mixed   | no            | 108 / 30 - 40              | 193 / 11 - 15  |
+*Fertilisation was performed according to local guidelines (Supplemental materials - Table S1).
+**Novi Sad: 400 plantsm^-2^, Bad Vilbel and Gross Lüewitz: 350 plantsm^-2^, Reckenholz and Seegräben: 300 plantsm^-2^
+
+The fields of this two-year study were arranged as a randomised complete block design (RCBD), consisting of four blocks. To lower the border effect to a minimum, each treatment was sown in three adjacent plots and only the middle plot was scored and harvested. The size of each harvested plot was 9m^2^ ([Figure 1](#fig-des)).
+
+![Figure 1: Arrangement of plots to reduce border effects. The red line enfolds the three plots of the same treatment while the yellow dashed line enfolds the harvested plot. Between adjacent treatments, a 1.2-metre corridor was mowed.](/writing/pictures/Experimental_design_graph.png){#fig-des width=50%}
+
+## Locations, husbandry and weather data
+The locations were selected in Germany (Bad Vilbel and Gross Lüsewitz), Serbia (Novi Sad) and in Switzerland (Seegräben and Reckenholz) and were chosen based on their differing latitude, longitude, soil type (Supplemental materials - Table S1) and weather (Table 2). The fields were ploughed and harrowed before sowing. The NLL seeds were inoculated with peat inoculum containing the rhizobium bacterium *Bradyrhizobium lupinus*. The inoculum was produced by Legume Technology Ltd, Nottinghamshire, UK. The same batch of inoculum was used in both years and stored dry and under exclusion of humidity at 10°C. After the inoculation, every 9m^2^ plot was sown individually in rows with 18 cm spacing. The plots were sown with a plot sowing tractor and RTK-GPS-orientation. Spring-tine and shallow inter-row cultivation was performed for the mechanical weeding. Chemical weed-management was performed by applying the pre-emergence herbicide Stomp Aqua in Gross Lüsewitz in 2022 and 2024; the fertilised pure oats were fertilised during late tillering, before the elongation stage, according to local guidelines (Supplemental materials - Table S1). Bad Vilbel, following organic production principles, used horn grit as fertiliser. The experiment was conducted during three seasons in Bad Vilbel, Gross Lüsewitz and Novi Sad, and during two seasons in Reckenholz and Seegräben.
+
+::: {.table-caption #tbl-weather}
+Weather data of the location and year in the cultivation seasons 2022, 2023 and 2024 (13 environment-years) , retrieved from the closest official weather stations (the distance of the weather station to the location was between 0.25 and 5 km). Data were retrieved daily and the average temperature as well as the sum of precipitation across the location- and year-specific cultivation period were calculated.
+:::
+| Location and year     | Mean temperature (°C)| Precipitation sum (mm)|
+|---------------------- |----------------------|-----------------------|
+| Bad Vilbel 2022       | 13.4                 | 174                   |
+| Bad Vilbel 2023       | 13.1                 | 293                   |
+| Bad Vilbel 2024       | 13.8                 | 402                   |
+| Gross Lüsewitz 2022   | 11.8                 | 234                   |
+| Gross Lüsewitz 2023   | 11.8                 | 258                   |
+| Gross Lüsewitz 2024   | 13                   | 367                   |
+| Novi Sad 2022         | 22.7                 | 75                    |
+| Novi Sad 2023         | 17.8                 | 234                   |
+| Novi Sad 2024         | 17.4                 | 175                   |
+| Seegräben 2022        | 14.1                 | 504                   |
+| Seegräben 2023        | 13.8                 | 500                   |
+| Reckenholz 2022       | 17.7                 | 244                   |
+| Reckenholz 2023       | 17.4                 | 362                   |
+
+
+## Harvest and post-harvest analyses
+Final plant canopy heights of the NLLs and oats were scored before harvesting. The crops were harvested with a plot combine harvester. The samples were then dried to a moisture content below 13%. In mixed treatments, the oats were separated from the NLLs with grain cleaners, where a 6mm oval-cut sieve was deployed. The cleaned samples were weighted to measure the partial and total yields.
+
+## Statistical analysis
+
+### Data preparation and calculations
+Based on the primary data, productivity metrics were calculated to assess the the land equivalent ratio of the mixture based on unfertilised oats (LER) and fertilised oats (LER_N) in pure stands, respectively. Further, the CPR of each crop based on unfertilised oats in pure stands (CPR<sub>lupin</sub>, CPR<sub>oat</sub>), and based on fertilised oats in pure stands (CPR<sub>oat</sub>_N), respectively, and the total CPR based on unfertilised oats in pure stands (CPR) and fertilised oats in pure stands (CPR_N), respectively [@zustovi2024]:
+
+$$
+\text{LER} = 
+\frac{\text{Yield}_{\text{lupin, mixed}}}{\text{Yield}_{\text{lupin, pure}}}
++
+\frac{\text{Yield}_{\text{oat, mixed}}}{\text{Yield}_{\text{oat, unfertilised, pure}}}
+$$
+
+$$
+\text{LER\_N} = 
+\frac{\text{Yield}_{\text{lupin, mixed}}}{\text{Yield}_{\text{lupin, pure}}}
++
+\frac{\text{Yield}_{\text{oat, mixed}}}{\text{Yield}_{\text{oat, fertilised, pure}}}
+$$
+
+$$
+\text{CPR}_{\text{crop}} = \frac{\text{Yield}_{\text{crop, mix}}}{p_{\text{crop}} \times \text{Yield}_{\text{crop, unfertilised, pure}}}
+$$
+
+$$
+\operatorname{CPR}_{\text{oat\_N}}
+= \frac{\text{Yield}_{\text{oat, mix}}}{p_{\text{oat}} \cdot \text{Yield}_{\text{oat, fertilised, pure}}}
+$$
+
+$$
+\text{CPR} = \text{CPR}_{\text{oat}} + \text{CPR}_{\text{lupin}}
+$$
+
+$$
+\text{CPR\_N} = \text{CPR}_{\text{oat}}\text{\_N} + \text{CPR}_{\text{lupin}}
+$$
+
+
+Where:
+
+$\text{Yield}_{\text{crop, mixed}}$ is the yield of the crop in mixture (t ha⁻¹),
+
+$\text{Yield}_{\text{crop, pure}}$ is the yield of the same crop in pure stand (t ha⁻¹), where unfertilised and fertilised specifies if the pure reference stands of oats were fertilised or not
+
+$p_{\text{crop}}$ is the proportion of the crop’s sowing density in the mixture relative to its pure stand, and
+
+$\text{crop}$ represents either NLL or oat.
+
+Those metrics allowed to compare the mixed cropping system's land use and crop performance relative to their monocropping equivalents. . By definition, the LER in pure stands is 1, the CPR of one crop is 1 if a crop does not benefit nor suffer from mixed cropping, and the total CPR of two crops is 2 if the two crops do not interact with each other.
+
+### Modelling
+The response variables were analysed using linear mixed-effects models. Four model-classes M1-M4 were designed to suit the target-variables (Supplemental materials - Table S2). The treatment, year, location, and their interaction effects were modelled as fixed effects and the block within a field as a random effect. The models were fitted using the `lme4` package within the R programming language [@bates2015; @zotero-47]. Inferences were calculated using the lmerTest package, which provides the shatterweights degree of freedom adjustment for the type-III ANOVA and the `contest`-function, which was used to test linear contrasts [@kuznetsova2017]. The contrast sum parametrisation was used to allow the interpretability of the regression coefficients to the population mean, and partially fitted intercepts were used for each group in case of the M2 and M4 models (R syntax: "y~0+group"). Post-hoc pairwise comparisons (alpha = 0.05) were performed to assess varietal differences.
+
+### Robustification
+To mitigate the influence of outliers, the outlier weights were automatically adapted using the weights from the analogous model derived by the `rlmer` function of the robustlmm package [@koller2016]. Target outliers were selected by applying the bounded influence function of huber loss. This application of the robustification is indicated in the Supplemental materials, Appendix A (robustify = TRUE).
+
+### Static grain-yield stability
+To assess treatment‐level differences in the static grain-yield stability, the coefficient of variation (CV) of the partial NLL, partial oat and the total yield for each treatment were calculated. The CV was computed using the standard deviation and mean of total yield, following the implementation in the metan package [@olivoto2020]:
+$$
+\text{CV}_{\text{mean}} = \frac{\text{SD}_{\text{value}}}{\text{Mean}_{\text{value}}} \times 100
+$$
+
+where Mean<sub>value</sub> is the mean total yield across treatment, year and location, and SD<sub>value</sub>​ is the corresponding standard deviation. A permutational multivariate analysis of variance (PERMANOVA) was applied for differences among treatments, years, locations, and their pairwise interactions [@oksanen2001]. Post-hoc pairwise contrasts among treatments were evaluated with pairwise.adonis2 [@arbizu2020].
+
+### Dynamic grain-yield stability
+The dynamic grain-yield stability across environments (location × year) was assessed using the univariate Finlay–Wilkinson regression approach, also known as joint regression [@finlay1963]. The analysis was implemented performing the regression-based stability analysis according to @eberhart1966 (Supplemental materials - Formulas 1 and 2). The calculated slope coefficient, $b_{1}$, represents treatment responsiveness to the environment. A $b_{1}$ slope coefficient close to 1 indicates average responsiveness: the treatment performs proportionally to environmental productivity. Values of $b_{1}$ above 1 reflect a more responsive or opportunistic treatment, showing above-average yields under favourable conditions but reduced performance in less productive environments, whereas $b_{1}$ below 1 denote a stable or conservative treatment that maintains relatively consistent yields across environments. The calculated Eberhart–Russell deviation variance $S^2_{di}$ at low levels indicates that the treatment’s response to the environment is highly predictable and stable (consistent across environments), whereas a high variance indicates erratic or inconsistent performance across environments, i.e. high dispersion of the data points around the slope coefficient $b_{1}$.
+
+To analyse the treatment-by-location interactions, and to quantify the grain-yield stability based on a multivariate model, the additive main effects and multiplicative interaction (AMMI) model was applied [@zotero-535; @zobel1988]. The AMMI model decomposed the observed total yield response $Y_{ij}$​ of treatment $i$ in location $j$ into additive main effects for treatment and location, plus multiplicative interaction effects captured by principal components axes (IPCAs):
+$$
+Y_{ij} = \mu + G_i + E_j + \sum_{k=1}^{N} \lambda_k \, \gamma_{ik} \, \delta_{jk} + \varepsilon_{ij} \tag{4}
+$$
+Where:
+
+$\mu$ is the grand mean,
+
+$G_i$ and $E_j$ are the treatment and location main effects,
+
+$\lambda_k$ is the singular value of the $k^{th}$ interaction principal component axis (IPCA),
+
+$\gamma_{ik}$ and $\delta_{jk}$ are the treatment and location scores for the $k^{th}$ IPCA, and
+
+$\varepsilon_{ij}$ is the residual term.
+
+Based on the AMMI-model, the weighted average of absolute scores (WAAS) was computed to summarise multi‐dimensional interaction effects into a single stability index, following @olivoto2019 as implemented in the metan R package (@olivoto2020):
+$$
+\text{WAAS}_i = \sum_{k=1}^{N} w_k \, \big| \text{IPCA}_{ik} \big| \tag{5}
+$$
+Where $w_k$ is the proportion of the interaction sum of squares explained by the $k^{th}$ IPCA.
+
+The WAAS summarises the multi-dimensional treatment-by-location interaction from the AMMI model into a single index of stability. Lower WAAS values indicate smaller absolute interaction effects and thus higher grain-yield stability, while higher WAAS values denote stronger environmental sensitivity. Together, the $b_{1}$, $S^2_{di}$ and WAAS indices capture the facets of yield stability: $b_{1}$ describes the directional response to the location, $S^2_{di}$ the dispersion around the direction of the response, and WAAS quantifies the magnitude of interaction-driven variability across locations and years, i.e. the treatment's sensitivity to environmental changes.

@@ -1,0 +1,74 @@
+project:
+  type: manuscript
+  execute-dir: project
+  render:
+    - "notebooks/analyse_hypothesis.Qmd"
+    # - "!writing/"
+    # - "notebooks/*.qmd"
+    # - "notebooks/*.Qmd"
+
+
+
+manuscript:
+  article: index.qmd
+  notebooks:
+    - notebook: notebooks/analyse_hypothesis.Qmd
+      title: "hypothesis analysis"
+      download-url: analyse_hypothesis.Qmd
+  # code-links:
+  #   - text: CarsPlot Code
+  #     icon: file-code
+  #     href: notebooks/cars-plot.qmd
+  # resources:
+  #   - data/cars.csv
+
+
+format:
+  # HTML format
+  html:
+    theme: default
+    number-sections: true  # Enable numbered sections
+    toc: true  # Enable table of contents
+    toc-depth: 4  # Number of levels in the TOC
+    # Uncomment to include custom CSS for further styling
+    # css: styles.css
+    
+    # Code formatting options
+    code-fold: true  # Collapse code blocks by default
+    fig-width: 6  # Set figure width in inches
+    fig-height: 4  # Set figure height in inches
+    
+  # PDF format
+  pdf:
+    documentclass: scrreprt  # KOMA-Script LaTeX document class (good for reports)
+    number-sections: true  # Enable numbered sections
+    toc: true  # Enable table of contents
+    toc-depth: 3  # Number of levels in the TOC
+    papersize: a4  # Set paper size to A4 (adjust if needed)
+    geometry: "margin=1in"  # Set general page margins (customizable)
+    fig-width: 6  # Set figure width for PDF
+    fig-height: 4  # Set figure height for PDF
+    
+  # DOCX format
+  docx:
+    toc: true  # Enable table of contents
+    toc-depth: 3  # Number of levels in the TOC
+
+
+# Code execution settings
+execute:
+  echo: true  # Display code in outputs
+  warning: false  # Suppress warnings
+  error: false  # Ignore errors and continue rendering
+
+
+
+date: now  # Automatically update the date
+date-format: "YYYY-MM-DD, HH:mm" # Date format
+
+page-navigation: true
+lang: en-GB
+
+
+bibliography: "multisite.bib"
+csl: "./elsevier-harvard.csl"

@@ -1,0 +1,1060 @@
+---
+title: Data Interrogations
+author: Yannik Schlup
+date: 2025-07-30
+format:
+  pdf:
+    toc: true
+    number-sections: true
+    colorlinks: true
+---
+
+here we do little interrogations of the data (next to the main hypotheses.csv tests)
+
+# SETUP
+```{r}
+# if (!interactive()) setwd("..")
+
+options(digits = 3)
+source("R/DataPrep.R")
+source("R/eval_hyp.R")
+hypotheses <- read.csv("./hypotheses.csv")
+```
+
+# YIELD STABILITY
+```{r, load metan}
+#install.packages("metan")
+library(metan)
+```
+
+```{r subset yield stability data}
+library(dplyr)
+D_stability <- D %>%
+  dplyr::select(y, l, block_ID, stand, cv_oat_N, cv_lupin, trt, total_yield_tha, lupin_tha, oat_tha)
+
+D_stability_lupin <- D %>%
+  filter(is.lupin) %>%
+  select(y, l, block_ID, stand, cv_oat_N, cv_lupin, trt, total_yield_tha, lupin_tha)
+
+D_stability_oat <- D %>%
+  filter(is.oat) %>%
+  select(y, l, block_ID, stand, cv_oat_N, cv_lupin, trt, total_yield_tha, oat_tha)
+
+```
+
+
+```{r, static yield stability by CV and treatment}
+library(dplyr)
+library(tidyr)
+
+cv_by_trt <- D %>%
+  filter(treatment %in% 1:18) %>%
+  pivot_longer(
+    cols      = c(lupin_tha, oat_tha, total_yield_tha),
+    names_to  = "variable",
+    values_to = "value"
+  ) %>%
+  group_by(variable, trt, y, l) %>%
+  summarise(
+    mean_val = mean(value, na.rm = TRUE),
+    sd_val   = sd(value,   na.rm = TRUE),
+    cv       = sd_val / (mean_val + 1e-6) * 100,
+    .groups  = "drop"
+  ) %>%
+  group_by(variable, trt) %>%
+  summarise(
+    env_cv = mean(cv, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  pivot_wider(
+    names_from  = variable,
+    values_from = env_cv
+  ) %>%
+  rename(
+    lupin_tha_cv     = lupin_tha,
+    oat_tha_cv       = oat_tha,
+    total_yield_cv   = total_yield_tha
+  ) %>%
+  arrange(as.numeric(trt))
+
+print(cv_by_trt)
+
+```
+
+```{r, static yield stability permanova to test for statistical difference lupin and oat}
+library(dplyr)
+library(tidyr)
+library(vegan)         
+library(pairwiseAdonis)
+
+#compute CV using mean & SD, then PERMANOVA + pairwise tests
+cv_adonis_sd <- function(var_name,
+                         data      = D_stability,
+                         n_perm    = 999,
+                         do_pair   = TRUE) {
+
+  cv_tbl <- data %>%
+    pivot_longer(all_of(var_name),
+                 names_to  = "variable",
+                 values_to = "value") %>%
+    group_by(variable, trt, y, l) %>%
+    summarise(
+      mean_val = mean(value, na.rm = TRUE),
+      sd_val   = sd(value,   na.rm = TRUE),
+      cv       = sd_val / (mean_val + 1e-6) * 100,
+      .groups = "drop"
+    ) %>%
+    select(-mean_val, -sd_val) %>%
+    pivot_wider(names_from  = variable,
+                values_from = cv,
+                values_fill = 0) %>%
+    drop_na()
+
+  cv_mat <- cv_tbl %>% select(-trt, -y, -l) %>% as.matrix()
+  grp    <- cv_tbl %>% select(trt, y, l)
+
+  global <- adonis2(
+    cv_mat ~ trt + y + l + trt:y + trt:l + y:l,
+    data         = grp,
+    permutations = n_perm,
+    method       = "euclidean",
+    by           = "terms"
+  )
+
+  pairwise <- NULL
+  if (do_pair) {
+    pairwise <- pairwise.adonis2(
+      cv_mat ~ trt,
+      data         = grp,
+      permutations = n_perm,
+      method       = "euclidean"
+    )
+  }
+
+  list(global   = global,
+       pairwise = pairwise)
+}
+
+# Run for total, lupin and oat yields
+res_total <- cv_adonis_sd("total_yield_tha")
+res_lupin <- cv_adonis_sd("lupin_tha")
+res_oat   <- cv_adonis_sd("oat_tha")
+
+cat("=== Total Yield CV (mean & SD) ===\n")
+print(res_total$global)
+cat("\nPairwise PERMANOVA (trt):\n")
+print(res_total$pairwise)
+
+cat("\n\n=== Lupin Yield CV ===\n")
+print(res_lupin$global)
+cat("\nPairwise PERMANOVA (trt):\n")
+print(res_lupin$pairwise)
+
+cat("\n\n=== Oat Yield CV ===\n")
+print(res_oat$global)
+cat("\nPairwise PERMANOVA (trt):\n")
+print(res_oat$pairwise)
+
+
+```
+
+
+```{r, static yield pairwise permanova}
+#install.packages("remotes")
+#remotes::install_github("pmartinezarbizu/pairwiseAdonis/pairwiseAdonis")
+library(pairwiseAdonis)
+
+
+cv_median_data <- D_stability %>%
+  pivot_longer(
+    cols      = c(total_yield_tha),
+    names_to  = "variable",
+    values_to = "value"
+  ) %>%
+  group_by(variable, trt, y, l, cv_lupin, cv_oat_N) %>%
+  summarise(
+    median_value = median(value, na.rm = TRUE),
+    mad_value    = mad(value, constant = 1, na.rm = TRUE),
+    cv_median    = mad_value / (median_value + 1e-6) * 100,
+    .groups      = "drop"
+  )
+
+cv_median_wide <- cv_median_data %>%
+  select(-median_value, -mad_value) %>%
+  pivot_wider(
+    names_from  = variable,
+    values_from = cv_median,
+    values_fill = 0
+  )
+
+cv_matrix         <- cv_median_wide %>% select(total_yield_tha) %>% as.matrix()
+grouping_factors  <- cv_median_wide %>% select(trt, cv_lupin, cv_oat_N)
+
+pairwise_trt <- pairwise.adonis2(
+  cv_matrix ~ trt,
+  data         = grouping_factors,
+  permutations = 999,
+  method       = "euclidean"
+)
+cat("\nPairwise PERMANOVA results for trt:\n")
+print(pairwise_trt)
+
+```
+
+# dynamic stability
+```{r, dynamic stability all}
+#Eberhart & Russell (1966)
+reg_model <- ge_reg(D_stability, l, trt, block_ID, total_yield_tha) 
+print(reg_model, n = 100)
+```
+
+```{r, dynamic stability hardcoded to verify}
+
+df <- D_stability %>%
+  mutate(
+    ENV = as.numeric(l),
+    GEN = as.numeric(trt),
+    REP = as.numeric(block_ID)
+  ) %>%
+  select(ENV, GEN, REP, total_yield_tha) #test on either lupin_tha  total_yield_tha (d_stability /_lupin/_oat)
+
+df <- as.data.frame(df)
+
+library(metan)
+reg_model <- ge_reg(
+  df,
+  env  = ENV,
+  gen  = GEN,
+  rep  = REP,
+  resp = total_yield_tha,
+  verbose = FALSE
+)
+
+reg_model
+map_trt_gen <- D_stability %>%
+  mutate(GEN = as.numeric(factor(trt))) %>%
+  distinct(GEN, trt) %>%
+  arrange(GEN)
+
+print(map_trt_gen, n = 100)
+```
+
+## Dynamic stability based on the AMMI-Models
+```{r, ammi model to re-verify b1 value}
+library(dplyr)
+library(tidyr)
+library(purrr)
+GE <- D_stability %>%
+  filter( !is.na(total_yield_tha) ) %>% 
+  group_by(l, trt) %>%
+  summarise(mean_y = mean(total_yield_tha), .groups = "drop")
+
+env_index <- GE %>% group_by(l) %>% summarise(I_e = mean(mean_y) - mean(GE$mean_y))
+GE <- GE %>% left_join(env_index, by = "l")
+
+fw_results <- GE %>%
+  nest(data = -trt) %>%
+  mutate(
+    fit  = map(data, ~ lm(mean_y ~ I_e, data = .x)),
+    b1   = map_dbl(fit, ~ coef(.x)[2]),
+    se_b = map_dbl(fit, ~ summary(.x)$coefficients[2,2]),
+    t_b1 = map_dbl(fit, ~ summary(.x)$coefficients[2,3]),
+    p_b1 = map_dbl(fit, ~ summary(.x)$coefficients[2,4]),
+    s2di = map_dbl(fit, ~ mean(residuals(.x)^2))
+  ) %>%
+  select(trt, b1, se_b, t_b1, p_b1, s2di)
+
+print(fw_results, digits = 3)
+
+
+```
+
+```{r, waas model metan}
+library(dplyr)
+library(tidyr)
+library(metan)
+
+D_core <- D %>%
+  select(l, trt, total_yield_tha) %>%
+  filter(!is.na(l), !is.na(trt), !is.na(total_yield_tha)) %>%
+  mutate(l   = factor(l),
+         trt = factor(trt))
+
+D_bal <- D_core %>%
+  complete(l, trt, fill = list(total_yield_tha = NA)) %>%
+  group_by(l) %>% 
+  mutate(total_yield_tha = ifelse(
+           is.na(total_yield_tha),
+           mean(total_yield_tha, na.rm = TRUE),
+           total_yield_tha)
+  ) %>% ungroup()
+
+D_bal <- D_bal %>%
+  mutate(block_ID = factor(rep(1:2, length.out = n())))
+
+
+AMMI_model <- waas(
+  D_bal, 
+  l, trt, block_ID,
+  total_yield_tha,
+  verbose = FALSE
+)
+options(tibble.print_max = Inf, tibble.width = Inf)
+print(AMMI_model, digits = 2)
+
+```
+
+```{r, waas scores sign difference by helper model}
+
+library(dplyr)
+library(tidyr)
+library(lmerTest)
+library(emmeans)
+
+#fit AMMI‐style mixed model (genotype × environment)
+mod_ammi <- lmer(
+  total_yield_tha ~ 
+    trt    +
+    l      + 
+    (1 | trt:l) +
+    (1 | l:block_ID),
+  data = D_bal
+)
+
+#emmeans across all environments
+emm_trt <- emmeans(mod_ammi, ~ trt)
+print(emm_trt)
+
+#Tukey‐adjusted pairwise comparisons
+pairs(emm_trt, adjust = "tukey") |> print()
+
+emm_trt_by_env <- emmeans(mod_ammi, ~ trt | l)
+
+print(emm_trt_by_env)
+pairs(emm_trt_by_env, adjust = "tukey") |> print()
+
+```
+
+# Yield stability graphs
+
+```{r, yield stability graphs no metan}
+
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(ggrepel)
+
+#build complete GE-mean matrix
+ge_means <- D_bal %>%
+  group_by(l, trt) %>%
+  summarise(y = mean(total_yield_tha), .groups = "drop")
+
+Ymat <- ge_means %>% 
+  pivot_wider(names_from = l, values_from = y) %>% 
+  column_to_rownames("trt") %>% 
+  as.matrix()
+
+#AMMI decomposition & WAAS (Olivoto et al. 2019)
+grand <- mean(Ymat)
+g_eff <- rowMeans(Ymat) - grand
+e_eff <- colMeans(Ymat) - grand
+Int   <- Ymat - grand -
+        matrix(g_eff, nrow = nrow(Ymat), ncol = ncol(Ymat), byrow = FALSE) -
+        matrix(e_eff, nrow = nrow(Ymat), ncol = ncol(Ymat), byrow = TRUE)
+
+sv  <- svd(Int)                                        
+w   <- (sv$d^2) / sum(sv$d^2)
+Gsc <- sv$u %*% diag(sv$d)
+Esc <- sv$v %*% diag(sv$d)
+WAAS <- c(0.66, 0.58, 0.8, 0.35, 0.08, 0.15, 0.44, 0.48, 0.38, 0.11, 0.04, 0.08, 0.21, 0.34, 0.1, 0.2, 0.35, 0.067)#rowSums(abs(Gsc) %*% diag(w))
+
+plot_env <- data.frame(
+  env = colnames(Ymat),
+  PC1 = Esc[, 1],
+  PC2 = Esc[, 2]
+)
+
+plot_gen <- data.frame(
+  trt  = rownames(Ymat),
+  Y    = rowMeans(Ymat),
+  WAAS = WAAS,
+  PC1  = Gsc[, 1],
+  PC2  = Gsc[, 2]
+)
+
+trt_labels <- data.frame(
+  trt   = as.character(1:18),
+  label = c(
+    "Bison", "Lion", "Troll", "Bison_N", "Lion_N", "Troll_N",
+    "Lunabor", "Probor", "Jowisz",
+    "Bison x Lunabor", "Bison x Probor", "Bison x Jowisz",
+    "Lion x Lunabor",  "Lion x Probor",  "Lion x Jowisz",
+    "Troll x Lunabor", "Troll x Probor", "Troll x Jowisz"
+  ),
+  stringsAsFactors = FALSE
+)
+
+plot_gen <- plot_gen %>% 
+  mutate(trt = as.character(trt)) %>%
+  left_join(trt_labels, by = "trt")
+
+
+plot_gen2 <- plot_gen %>% 
+  dplyr::mutate(
+    stand = dplyr::case_when(
+      trt %in% c("1","2","3","4","5","6")    ~ "Oat",
+      trt %in% c("7","8","9")    ~ "Lupin",
+      TRUE                      ~ "Mixed"
+    )
+  )
+
+#choose your three colours
+cols <- c(
+  Oat   = "forestgreen",
+  Lupin = "purple",
+  Mixed = "dodgerblue"
+)
+
+#Yield × WAAS scatter
+yieldxwaas <- ggplot(plot_gen2, aes(WAAS, Y, label = label, colour = stand)) +
+  geom_hline(yintercept = mean(plot_gen2$Y),    linetype = 2) +
+  geom_vline(xintercept = mean(plot_gen2$WAAS), linetype = 2) +
+  geom_point(size = 3) +
+  geom_text_repel(min.segment.length = 0) +
+  scale_colour_manual(name = "Crop", values = cols) +
+  labs(
+    x = "Environmental sensitivity (WAAS)",
+    y = expression(Mean~total~yield~(t~ha^{-1}))
+  ) +
+  theme_bw()
+
+#AMMI PC1 × PC2 biplo
+ammibiplot <- ggplot() +
+  geom_hline(yintercept = 0, colour = "grey60") +
+  geom_vline(xintercept = 0, colour = "grey60") +
+  geom_point(data = plot_gen2,
+             aes(PC1, PC2, colour = stand),
+             size = 3) +
+  geom_text_repel(data = plot_gen2,
+                  aes(PC1, PC2, label = label, colour = stand),
+                  min.segment.length = 0) +
+  geom_point(data = plot_env,
+             aes(PC1, PC2),
+             colour = "darkred", shape = 17, size = 3) +
+  geom_text_repel(data = plot_env,
+                  aes(PC1, PC2, label = env),
+                  colour = "darkred",
+                  min.segment.length = 0) +
+  scale_colour_manual(name = "Crop", values = cols) +
+  labs(x = "IPCA-1", y = "IPCA-2") +
+  theme_bw()
+
+#save()
+ggsave("writing/pictures/yieldxwaas.png", yieldxwaas, dpi=600, w=6, h=5, units="in")
+ggsave("writing/pictures/ammibiplot.png", ammibiplot, dpi=600, w=6, h=5, units="in")
+
+```
+
+```{r backup visuals dyn yield stabilit}
+
+#y x waas
+ggplot(plot_gen, aes(WAAS, Y, label = trt)) +
+  geom_hline(yintercept = mean(plot_gen$Y),    linetype = 2) +
+  geom_vline(xintercept = mean(plot_gen$WAAS), linetype = 2) +
+  geom_point(size = 3) +
+  geom_text_repel(min.segment.length = 0) +
+  labs(title = "Yield × Stability (WAAS)",
+       x = "WAAS  (lower = more stable)",
+       y = "Mean yield (t ha⁻¹)") +
+  theme_bw()
+
+#ammi biplot
+ggplot() +
+  geom_hline(yintercept = 0, colour = "grey60") +
+  geom_vline(xintercept = 0, colour = "grey60") +
+  geom_point(data = plot_gen, aes(PC1, PC2), colour = "steelblue", size = 3) +
+  geom_text_repel(data = plot_gen, aes(PC1, PC2, label = trt),
+                  colour = "steelblue", min.segment.length = 0) +
+  geom_point(data = plot_env, aes(PC1, PC2), colour = "tomato", shape = 17, size = 3) +
+  geom_text_repel(data = plot_env, aes(PC1, PC2, label = env),
+                  colour = "tomato", min.segment.length = 0) +
+  labs(title = "AMMI biplot (IPCA-1 × IPCA-2)",
+       x = "IPCA-1", y = "IPCA-2") +
+  theme_bw()
+```
+
+
+```{r, lupin proportion overview}
+library(dplyr)
+
+lupin_prop_stats <- D %>% 
+  filter(is.mixed,
+         !is.na(lupin_proportion)) %>%
+  group_by(l, trt) %>%
+  summarise(
+    n                 = n(),
+    median_prop       = median(lupin_proportion, na.rm = TRUE),
+    mad_prop          = mad(lupin_proportion, constant = 1, na.rm = TRUE),
+    .groups           = "drop"
+  )
+
+print(lupin_prop_stats, n = nrow(lupin_prop_stats))
+
+
+```
+
+# yield overview graph
+```{r, yield overview plot}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+
+#the five locations in your D
+locations <- unique(D$l)
+
+plots <- lapply(locations, function(loc){
+
+  #filter by treatment *and* this location
+  D_filtered <- D %>%
+    filter(treatment %in% 1:18, l == loc) %>%
+    mutate(treatment = as.numeric(as.character(treatment)))
+
+  #assign x‐variety label
+  D_filtered <- D_filtered %>%
+    mutate(
+      x_label = case_when(
+        treatment %in% 1:3   ~ as.character(cv_oat_N),
+        treatment %in% 4:6   ~ as.character(cv_oat_N),
+        treatment %in% 7:9   ~ as.character(cv_lupin),
+        treatment %in% 10:18 ~ paste(cv_oat, "×", cv_lupin)
+      )
+    )
+
+  #median & MAD
+  D_summary <- D_filtered %>%
+    group_by(treatment, x_label, cv_oat_N, cv_lupin) %>%
+    summarise(
+      oat_yield_median   = median(oat_tha,    na.rm = TRUE),
+      oat_yield_mad      = mad(oat_tha, constant = 1, na.rm = TRUE),
+      lupin_yield_median = median(lupin_tha,  na.rm = TRUE),
+      lupin_yield_mad    = mad(lupin_tha, constant = 1, na.rm = TRUE),
+      .groups = "drop"
+    ) %>%
+    pivot_longer(
+      cols      = c(oat_yield_median, lupin_yield_median), 
+      names_to  = "crop", 
+      values_to = "yield"
+    ) %>%
+    mutate(
+      mad  = ifelse(crop == "oat_yield_median", oat_yield_mad, lupin_yield_mad),
+      crop = recode(crop,
+                    oat_yield_median   = "Oat Yield",
+                    lupin_yield_median = "Lupin Yield")
+    ) %>%
+    drop_na(yield, mad)
+
+  #error‐bar positions
+  D_summary <- D_summary %>%
+    group_by(treatment) %>%
+    mutate(
+      lupin_yield   = ifelse(crop == "Lupin Yield", yield, 0),
+      oat_yield     = ifelse(crop == "Oat Yield",   yield, 0),
+      stacked_yield = sum(yield, na.rm = TRUE),
+
+      errorbar_min = ifelse(crop == "Lupin Yield",
+                            yield - mad, yield),
+      errorbar_max = ifelse(crop == "Lupin Yield",
+                            yield + mad, yield),
+
+      errorbar_min = ifelse(crop == "Oat Yield" & treatment >= 10,
+                            stacked_yield - mad,
+                            errorbar_min),
+      errorbar_max = ifelse(crop == "Oat Yield" & treatment >= 10,
+                            stacked_yield + mad,
+                            errorbar_max),
+
+      errorbar_min = ifelse(crop == "Oat Yield" & treatment < 7,
+                            oat_yield - mad,
+                            errorbar_min),
+      errorbar_max = ifelse(crop == "Oat Yield" & treatment < 7,
+                            oat_yield + mad,
+                            errorbar_max)
+    ) %>%
+    ungroup() %>%
+    mutate(
+      errorbar_min = ifelse(is.na(errorbar_min), yield - mad, errorbar_min),
+      errorbar_max = ifelse(is.na(errorbar_max), yield + mad, errorbar_max)
+    ) %>%
+    arrange(treatment, crop) %>%
+    mutate(
+      fill_color = ifelse(crop == "Oat Yield",
+                          as.character(cv_oat_N),
+                          as.character(cv_lupin))
+    )
+
+  #colors & factor levels
+  oat_colors   <- c("Bison"="#117733","Lion"="#44AA99","Troll"="#88CCEE", "Bison_N"="#D4A017","Lion_N"="#C68642","Troll_N"="#8B6B3E")
+  lupin_colors <- c("Jowisz"="#CC6677","Lunabor"="#882255","Probor"="#AA4499")
+  palette      <- c(oat_colors, lupin_colors)
+  D_summary$fill_color <- factor(
+    D_summary$fill_color,
+    levels = c("Bison","Lion","Troll","Bison_N","Lion_N","Troll_N","Lunabor","Probor","Jowisz")
+  )
+
+  ggplot(D_summary,
+         aes(x = factor(x_label, levels = unique(x_label)),
+             y = yield,
+             fill = fill_color)) +
+    geom_bar(stat="identity", position="stack", width=0.7, color="black") +
+    geom_errorbar(aes(ymin = errorbar_min, ymax = errorbar_max, group = crop),
+                  width = 0.3, color = "black") +
+    scale_fill_manual(values = palette,
+                      guide = guide_legend(title = "Variety",
+                                           override.aes = list(size=6))) +
+    labs(
+      title = loc,
+      x = "Variety combination",
+      y = expression("Yield ("*t~ha^{-1}*")"),
+      fill = "Variety"
+    ) +
+    theme_minimal() +
+    theme(
+      plot.title     = element_text(size=15, hjust=0),
+      axis.text.x    = element_text(size=11, angle=45, hjust=1),
+      axis.text.y    = element_text(size=11),
+      axis.title.x   = element_text(size=13),
+      axis.title.y   = element_text(size=13),
+      legend.text    = element_text(size=11),
+      legend.title   = element_text(size=13),
+      legend.key.size= unit(1.2, "lines")
+    ) +
+    coord_cartesian(ylim = c(0, 6.3)) 
+})
+
+#name them by location
+names(plots) <- locations
+
+plots[["Gross"]]
+plots[["Novi"]]
+plots[["Re"]]
+plots[["Seegr"]]
+plots[["Vilbel"]]
+
+```
+
+```{r all yield plots cominbed}
+library(patchwork)
+
+
+p1 <- plots[["Gross"]]
+p2 <- plots[["Novi"]]
+p3 <- plots[["Re"]]
+p4 <- plots[["Seegr"]]
+p5 <- plots[["Vilbel"]]
+
+p1 <- p1 +
+  labs(title = "Gross Lüsewitz (DE)") +
+  theme(
+    axis.text.x  = element_blank(),
+    axis.title.x = element_blank(),
+    axis.ticks.x = element_line(),
+    legend.position = "right"
+  )
+
+p2 <- p2 +
+  labs(title = "Novi Sad (RS)") +
+  guides(fill = "none") +
+  theme(
+    axis.text.x  = element_blank(),
+    axis.title.x = element_blank(),
+    axis.ticks.x = element_line()
+  )
+
+p3 <- p3 +
+  labs(title = "Reckenholz (CH)") +
+  guides(fill = "none") +
+  theme(
+    axis.text.x  = element_blank(),
+    axis.title.x = element_blank(),
+    axis.ticks.x = element_line()
+  )
+
+p4 <- p4 +
+  labs(title = "Seegräben (CH)") +
+  guides(fill = "none") +
+  theme(
+    axis.text.x  = element_blank(),
+    axis.title.x = element_blank(),
+    axis.ticks.x = element_line()
+  )
+
+p5 <- p5 +
+  labs(title = "Bad Vilbel (DE)") +
+  guides(fill = "none") +
+  theme(
+    axis.text.x  = element_text(size = 14, angle = 45, hjust = 1),
+    axis.title.x = element_text(size = 16, margin = margin(t = 5)),
+    axis.ticks.x = element_line()
+  )
+
+# stack them A–E
+final_plot <- (p1 / p2 / p3 / p4 / p5) +
+  theme(
+    legend.position      = "bottom",
+    legend.justification = "center",
+    legend.box.margin    = margin(t = 8),
+    plot.margin          = margin(t = -100, r = 5, b = -100, l = 5)
+  )
+# display
+print(final_plot)
+
+# save
+ggsave("writing/pictures/yieldplot.png",
+       final_plot,
+       dpi    = 600,
+       width  = 8.27,
+       height = 10.69,
+       units  = "in")
+```
+
+```{r, all yield summarised across locations plot}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(forcats)
+
+D_all <- D %>%
+  filter(treatment %in% 1:18) %>%
+  mutate(
+    treatment = as.numeric(as.character(treatment)),
+    # x-label per your rules
+    x_label = case_when(
+      treatment %in% 1:3   ~ as.character(cv_oat_N),
+      treatment %in% 4:6   ~ as.character(cv_oat_N),
+      treatment %in% 7:9   ~ as.character(cv_lupin),
+      treatment %in% 10:18 ~ paste(cv_oat, "×", cv_lupin)
+    )
+  )
+
+D_summary <- D_all %>%
+  group_by(treatment, x_label, cv_oat_N, cv_lupin) %>%
+  summarise(
+    oat_yield_median   = median(oat_tha,   na.rm = TRUE),
+    oat_yield_mad      = mad(oat_tha,      constant = 1, na.rm = TRUE),
+    lupin_yield_median = median(lupin_tha, na.rm = TRUE),
+    lupin_yield_mad    = mad(lupin_tha,    constant = 1, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  pivot_longer(
+    cols      = c(oat_yield_median, lupin_yield_median),
+    names_to  = "crop",
+    values_to = "yield"
+  ) %>%
+  mutate(
+    mad  = ifelse(crop == "oat_yield_median", oat_yield_mad, lupin_yield_mad),
+    crop = recode(crop,
+                  oat_yield_median   = "Oat Yield",
+                  lupin_yield_median = "Lupin Yield")
+  ) %>%
+  drop_na(yield, mad)
+
+D_summary <- D_summary %>%
+  group_by(treatment) %>%
+  mutate(
+    lupin_yield   = ifelse(crop == "Lupin Yield", yield, 0),
+    oat_yield     = ifelse(crop == "Oat Yield",   yield, 0),
+    stacked_yield = sum(yield, na.rm = TRUE),
+
+    errorbar_min = ifelse(crop == "Lupin Yield", yield - mad, yield),
+    errorbar_max = ifelse(crop == "Lupin Yield", yield + mad, yield),
+
+    # stacked error for Oat in mixtures (treatment >= 10)
+    errorbar_min = ifelse(crop == "Oat Yield" & treatment >= 10,
+                          stacked_yield - mad, errorbar_min),
+    errorbar_max = ifelse(crop == "Oat Yield" & treatment >= 10,
+                          stacked_yield + mad, errorbar_max),
+
+    # standalone error for Oat in oat monocultures (treatment < 7)
+    errorbar_min = ifelse(crop == "Oat Yield" & treatment < 7,
+                          oat_yield - mad, errorbar_min),
+    errorbar_max = ifelse(crop == "Oat Yield" & treatment < 7,
+                          oat_yield + mad, errorbar_max)
+  ) %>%
+  ungroup() %>%
+  mutate(
+    errorbar_min = ifelse(is.na(errorbar_min), yield - mad, errorbar_min),
+    errorbar_max = ifelse(is.na(errorbar_max), yield + mad, errorbar_max)
+  ) %>%
+  arrange(treatment, crop) %>%
+  mutate(
+    fill_color = ifelse(crop == "Oat Yield",
+                        as.character(cv_oat_N),
+                        as.character(cv_lupin))
+  )
+
+oat_colors   <- c("Bison"="#117733","Lion"="#44AA99","Troll"="#88CCEE",
+                  "Bison_N"="#D4A017","Lion_N"="#C68642","Troll_N"="#8B6B3E")
+lupin_colors <- c("Jowisz"="#CC6677","Lunabor"="#882255","Probor"="#AA4499")
+palette      <- c(oat_colors, lupin_colors)
+
+D_summary$fill_color <- factor(
+  D_summary$fill_color,
+  levels = c("Bison","Lion","Troll","Bison_N","Lion_N","Troll_N","Lunabor","Probor","Jowisz")
+)
+
+x_levels <- D_summary %>% arrange(treatment) %>% pull(x_label) %>% unique()
+D_summary <- D_summary %>% mutate(x_label = factor(x_label, levels = x_levels))
+
+p_all_locations <- ggplot(
+  D_summary,
+  aes(x = x_label, y = yield, fill = fill_color)
+) +
+  geom_bar(stat = "identity", position = "stack", width = 0.7, color = "black") +
+  geom_errorbar(aes(ymin = errorbar_min, ymax = errorbar_max, group = crop),
+                width = 0.3, color = "black") +
+  scale_fill_manual(values = palette,
+                    guide = guide_legend(title = "Variety",
+                                         override.aes = list(size = 6))) +
+  labs(
+    x   = "Variety combination",
+    y   = expression("Yield ("*t~ha^{-1}*")"),
+    fill= "Variety"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x     = element_text(size = 11, angle = 45, hjust = 1),
+    axis.text.y     = element_text(size = 11),
+    axis.title.x    = element_text(size = 13),
+    axis.title.y    = element_text(size = 13),
+    legend.text     = element_text(size = 11),
+    legend.title    = element_text(size = 13),
+    legend.position = "right",
+    legend.key.size = unit(1.2, "lines")
+  )
+
+p_all_locations
+
+# Optional: save
+ggsave("writing/pictures/allsites.png",
+       p_all_locations,
+       dpi    = 600,
+       width  = 8.27,
+       height = 3,
+       units  = "in")
+```
+
+
+```{r yield overview as table}
+library(dplyr)
+library(tidyr)
+library(tibble)
+
+trt_labels <- tribble(
+  ~treatment, ~Treatment,
+   1, "Bison",
+   2, "Lion",
+   3, "Troll",
+   4, "Bison_N",
+   5, "Lion_N",
+   6, "Troll_N",
+   7, "Lunabor",
+   8, "Probor",
+   9, "Jowisz",
+  10, "Bison × Lunabor",
+  11, "Bison × Probor",
+  12, "Bison × Jowisz",
+  13, "Lion × Lunabor",
+  14, "Lion × Probor",
+  15, "Lion × Jowisz",
+  16, "Troll × Lunabor",
+  17, "Troll × Probor",
+  18, "Troll × Jowisz"
+) %>% mutate(treatment = as.character(treatment))
+
+treat_order <- trt_labels$Treatment
+
+D_prepped <- D %>%
+  mutate(
+    treatment        = as.character(treatment),
+    total_yield_tha  = coalesce(total_yield_tha, oat_tha + lupin_tha),
+    `Location × Year` = paste(l, y)
+  ) %>%
+  left_join(trt_labels, by = "treatment")
+
+summ_long <- D_prepped %>%
+  group_by(`Location × Year`, Treatment) %>%
+  summarise(
+    med = median(total_yield_tha, na.rm = TRUE),
+    mad = mad(total_yield_tha, constant = 1, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(`Median ± MAD` = sprintf("%.2f ± %.2f", med, mad)) %>%
+  select(`Location × Year`, Treatment, `Median ± MAD`)
+
+yield_table <- summ_long %>%
+  mutate(Treatment = factor(Treatment, levels = treat_order)) %>%
+  pivot_wider(
+    names_from  = `Location × Year`,
+    values_from = `Median ± MAD`,
+    values_fn   = list(`Median ± MAD` = dplyr::first)
+  ) %>%
+  arrange(Treatment) %>%
+  mutate(Treatment = as.character(Treatment)) %>%
+  #replace NA cells with empty string
+  mutate(across(-Treatment, ~ tidyr::replace_na(., "")))
+
+yield_table
+
+write.csv(yield_table, "writing/yield_table.csv", row.names = FALSE, na = "")
+
+```
+
+```{r, total yield differences pure to mixed}
+library(dplyr)
+library(broom)
+library(tidyr)
+
+cmp <- D %>%
+  filter(treatment %in% 4:18,
+         !is.na(total_yield_tha),
+         !is.na(y)) %>%
+  mutate(group = ifelse(treatment %in% 4:9, "Pure", "Mixed"))
+
+desc <- cmp %>%
+  group_by(l, y, group) %>%
+  summarise(mean_yield = mean(total_yield_tha, na.rm = TRUE), .groups = "drop") %>%
+  pivot_wider(names_from  = group,
+              values_from = mean_yield,
+              names_prefix = "mean_")
+
+tt <- cmp %>%
+  group_by(l, y) %>%
+  do(tidy(t.test(total_yield_tha ~ group, data = .))) %>%
+  ungroup() %>%
+  transmute(
+    l,
+    y,
+    estimate_pure  = estimate1,
+    estimate_mixed = estimate2,
+    diff_estimate  = estimate,
+    t_value        = statistic,
+    df             = parameter,
+    p_value        = p.value,
+    conf_low       = conf.low,
+    conf_high      = conf.high
+  )
+
+result <- left_join(desc, tt, by = c("l", "y"))
+
+print(result, n = Inf, width = Inf, digits = 3)
+
+
+```
+
+```{r, cpr differences N no n}
+
+library(dplyr)
+library(broom)
+
+df <- D %>%
+  filter(treatment %in% 10:18) %>%
+  select(treatment, CPR, CPR_N) %>%
+  tidyr::drop_na(CPR, CPR_N)
+
+res_ttest <- df %>%
+  group_by(treatment) %>%
+  summarise(
+    n               = n(),
+    mean_CPR        = mean(CPR),
+    mean_CPR_N      = mean(CPR_N),
+    mean_diff       = mean(CPR - CPR_N),
+    sd_diff         = sd(CPR - CPR_N),
+ 
+    cohen_dz        = mean_diff / sd_diff,
+    ttest = list(t.test(CPR, CPR_N, paired = TRUE)),
+    .groups = "drop"
+  ) %>%
+  mutate(ttest = purrr::map(ttest, broom::tidy)) %>%
+  tidyr::unnest(ttest) %>%
+  transmute(
+    treatment, n, mean_CPR, mean_CPR_N, mean_diff, cohen_dz,
+    conf.low, conf.high, statistic, p.value,
+    p.value_FDR = p.adjust(p.value, method = "BH"),
+    method
+  )
+
+print(res_ttest, n = Inf)
+
+res_wilcox <- df %>%
+  group_by(treatment) %>%
+  summarise(
+    n           = n(),
+    mean_diff   = mean(CPR - CPR_N),
+    wilcox = list(wilcox.test(CPR, CPR_N, paired = TRUE, exact = FALSE)),
+    .groups = "drop"
+  ) %>%
+  mutate(wilcox = purrr::map(wilcox, broom::tidy)) %>%
+  tidyr::unnest(wilcox) %>%
+  transmute(
+    treatment, n, mean_diff,
+    p.value,
+    p.value_FDR = p.adjust(p.value, method = "BH"),
+    method
+  )
+
+print(res_wilcox, n = Inf)
+```
+
+```{r, cpr differences N no n}
+
+library(dplyr)
+library(broom)
+
+df <- D %>%
+  filter(treatment %in% 10:18) %>%
+  select(treatment, CPR_oat, CPR_oat_N) %>%
+  tidyr::drop_na(CPR_oat, CPR_oat_N)
+
+res_ttest <- df %>%
+  group_by(treatment) %>%
+  summarise(
+    n               = n(),
+    mean_CPR_oat        = mean(CPR_oat),
+    mean_CPR_oat_N      = mean(CPR_oat_N),
+    mean_diff       = mean(CPR_oat - CPR_oat_N),
+    sd_diff         = sd(CPR_oat - CPR_oat_N),
+    cohen_dz        = mean_diff / sd_diff,
+    ttest = list(t.test(CPR_oat, CPR_oat_N, paired = TRUE)),
+    .groups = "drop"
+  ) %>%
+  mutate(ttest = purrr::map(ttest, broom::tidy)) %>%
+  tidyr::unnest(ttest) %>%
+  transmute(
+    treatment, n, mean_CPR_oat, mean_CPR_oat_N, mean_diff, cohen_dz,
+    conf.low, conf.high, statistic, p.value,
+    p.value_FDR = p.adjust(p.value, method = "BH"),
+    method
+  )
+
+print(res_ttest, n = Inf)
+
+res_wilcox <- df %>%
+  group_by(treatment) %>%
+  summarise(
+    n           = n(),
+    mean_diff   = mean(CPR_oat - CPR_oat_N),
+    wilcox = list(wilcox.test(CPR_oat, CPR_oat_N, paired = TRUE, exact = FALSE)),
+    .groups = "drop"
+  ) %>%
+  mutate(wilcox = purrr::map(wilcox, broom::tidy)) %>%
+  tidyr::unnest(wilcox) %>%
+  transmute(
+    treatment, n, mean_diff,
+    p.value,
+    p.value_FDR = p.adjust(p.value, method = "BH"),
+    method
+  )
+
+print(res_wilcox, n = Inf)
+
+```

@@ -1,0 +1,18 @@
+# Appendix
+## tabelle
+```{r}
+# extract_interesting_vals <- function(AEH_entry){
+#   model <- AEH_entry$model$model
+#   return(c(
+#     year = coef(model)["year",],
+#     season = coef(model)["season",]
+#   ))
+# }
+
+# extract_interesting_vals(AEH[["H13.l"]])
+
+# sapply(AEH[c("H1",...)], extract_interesting_vals)
+```
+
+
+## 

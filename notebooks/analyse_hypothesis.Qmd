@@ -1,0 +1,51 @@
+---
+title: Analysis of Hypotheses
+author: 
+  - Lukas Graz
+  - Yannik Schlup
+date: 2024-10-08
+engine: knitr
+format: 
+  html:
+    fig-width: 9
+    fig-height: 6
+    embed-resources: true
+---
+
+# Analysis of Hypotheses:
+
+```{r setup}
+#| echo: false
+#| message: false
+#| warning: false
+
+options(digits = 3)
+
+suppressMessages({
+source("R/DataPrep.R")
+source("R/read_hyp.R")
+source("R/eval_hyp.R")
+source("R/adj_nested_pvals_AEH.R")
+})
+
+# hypotheses <- hypotheses[9:10, ]
+# unlink("cache", recursive=TRUE)
+AEH <- list()
+for(H_ID in rownames(hypotheses)) {
+  if (interactive()) message(H_ID)
+  AEH[[H_ID]] <- eval_hyp(hyp <- hypotheses[H_ID,], D)
+}
+AEH <- adj_nested_pvals_AEH(AEH)
+
+saveRDS(AEH, "cache/AEH.rds")
+```
+
+```{r print_hypotheses}
+#| echo: false
+#| message: false
+#| warning: false
+#| results: 'asis'
+for(AEH_i in AEH) {
+  print(AEH_i)
+}
+```

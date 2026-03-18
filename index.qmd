@@ -1,0 +1,21 @@
+---
+# For Scolar Frontmatter doc: https://quarto.org/docs/authoring/front-matter.html
+title: "Mixed cropping of narrow‑leaved lupin with oat enhances grain‑yield stability across five European locations"
+
+
+---
+
+{{< include writing/05-index.qmd >}}
+
+{{< include writing/10-abstract.qmd >}}
+
+{{< include writing/15-intro.qmd >}}
+
+{{< include writing/20-methods.qmd >}}
+
+{{< include writing/25-results.qmd >}}
+
+{{< include writing/30-discussion.qmd >}}
+
+{{< include writing/50-references.qmd >}}
+
