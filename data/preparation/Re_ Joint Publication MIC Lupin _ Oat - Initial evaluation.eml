@@ -1,0 +1,437 @@
+Received: from ZR2P278MB1148.CHEP278.PROD.OUTLOOK.COM (2603:10a6:910:60::7) by
+ ZR3P278MB1305.CHEP278.PROD.OUTLOOK.COM with HTTPS; Fri, 13 Jun 2025 16:23:43
+ +0000
+Received: from ZR0P278CA0194.CHEP278.PROD.OUTLOOK.COM (2603:10a6:910:44::21)
+ by ZR2P278MB1148.CHEP278.PROD.OUTLOOK.COM (2603:10a6:910:60::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8835.26; Fri, 13 Jun
+ 2025 16:23:29 +0000
+Received: from ZR2PEPF0000012E.CHEP278.PROD.OUTLOOK.COM
+ (2603:10a6:910:44:cafe::ac) by ZR0P278CA0194.outlook.office365.com
+ (2603:10a6:910:44::21) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.8835.25 via Frontend Transport; Fri,
+ 13 Jun 2025 16:23:29 +0000
+Authentication-Results: spf=pass (sender IP is 2607:f8b0:4864:20::135)
+ smtp.mailfrom=gmail.com; dkim=pass (signature was verified)
+ header.d=gmail.com;dmarc=pass action=none header.from=gmail.com;compauth=pass
+ reason=100
+Received-SPF: Pass (protection.outlook.com: domain of gmail.com designates
+ 2607:f8b0:4864:20::135 as permitted sender) receiver=protection.outlook.com;
+ client-ip=2607:f8b0:4864:20::135; helo=mail-il1-x135.google.com; pr=C
+Received: from mail-il1-x135.google.com (2607:f8b0:4864:20::135) by
+ ZR2PEPF0000012E.mail.protection.outlook.com (2603:10a6:918::126) with
+ Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id
+ 15.20.8835.15 via Frontend Transport; Fri, 13 Jun 2025 16:23:28 +0000
+Received: by mail-il1-x135.google.com with SMTP id e9e14a558f8ab-3ddc5084952so9141915ab.2
+        for <schlupy@student.ethz.ch>; Fri, 13 Jun 2025 09:23:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1749831807; x=1750436607; darn=student.ethz.ch;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=YaPT6X/x3fL3Z8rzIraz7oYzSOWbgp8g7lhkxOMVsCE=;
+        b=Ob6+OBc6OUKfqgT1eqDO3HxzlRmOIlztIcRjyhMA8WtlRuWVVMu9u/7qySYudWiu3S
+         VZbMNO2PKyA+9gegctK9Hl9dN10FhS14ohP2MDAiQxDueA4LTxMvsaxAOZSqXCXdk3zE
+         VAMg0OPjKpKhYh726zMkmtIYoxlppmCpCloEYBf8EbqJyV0Yq5Wpj2A1GJETsTAgAShM
+         sZVHh2iXAMV0Hiwy6zuWcPaluttSOQvv8PiEHsmxLyBlcy1+uUZjQoY1ZGZrwNRfIJeQ
+         GTX7usxudgHbT5msiLRlGjc+KDLzsXTvlmb38yYxiLjZjaoPxkRAm1jpSSLoZtQ+u4mA
+         lJgA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749831807; x=1750436607;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=YaPT6X/x3fL3Z8rzIraz7oYzSOWbgp8g7lhkxOMVsCE=;
+        b=ERAVkcmG8suUw25iAbiX8X2LrowTewvdZ5Yn5OnDqT19jUpL+uftR4IuxX3WOvRPhl
+         WYtbR3UVH0r9Msvm3v9F44Z7XpFIAacBfivlXfikgpBRsQMP/UU6CwE8bMC0+gNvA6QA
+         vVBX77Nk31PZ0jJjXoyfjI4sZxXn3fAV7Wv85G0FDoLkevLz6r1KrGPPC8AJCvOcaRvr
+         ubH4L0XvnXgZG2d2/+X5IBr/z5ZHu3T5LilCrZXULop029UQOMe9YK74xQ1GzH0vl4k0
+         OGCunlvfjF//EMiWUJhvrq7O24I8vkCsRARpzX8HGJC8lU6QVB2Qk18jjUBvSXBo66AM
+         niPw==
+X-Forwarded-Encrypted: i=1; AJvYcCVpYyKHt0tjcEDADjFXMPbFFekrzewZkHZD1aOJT2lNA1PeztGurUuT+IsyIFH0dEXzh6IIC/2y@student.ethz.ch
+X-Gm-Message-State: AOJu0Yy0cxiOUEQj3RRm8ihPvEz43gF4OIy4ZeoMsnnBb2TF+6I/DZz9
+	CSop+aGJYPadYwmXManfQfsNzMqSIWY8E357clMZ80l2/XJ/KvGBLBt+2PsA/ZI9sv3msiuJe54
+	Dq9ie/avGdkeW/Xe2O/k4idxiO1d8sK4=
+X-Gm-Gg: ASbGnct5s5iOe5DckDacKd6f6FWniGfTK1oIAuOxpUJmGM7DIq5yYpu7vTPjH7vn6e1
+	A81IgwbaTSf/0yIAnLs01+igVMx6k3fP4NGlKEJtxybFC8lcltnKO+1r2X62gzv6qnFcz1el543
+	Jt/D1O8IoJzXRTd6OoBAOoBt+N1bdaihR9LSx0X6CK00A=
+X-Google-Smtp-Source: AGHT+IHyGNk0ymhWzII7EEotprsqZ4DoOT5VskWn0egcGtJPCuqq5zmgx70PmysLD7ncti15spHk0dFYwqM139/EODo=
+X-Received: by 2002:a05:6e02:2308:b0:3dd:f4d5:1c1a with SMTP id
+ e9e14a558f8ab-3de07cd1771mr2523945ab.17.1749831806560; Fri, 13 Jun 2025
+ 09:23:26 -0700 (PDT)
+References: <eb346e57f64e456c84c6fe0a21f6fc91@agroscope.admin.ch>
+ <b103e285509f4582bc49de9058f84180@agroscope.admin.ch> <aa1bd0934b724e78a798a7f7a13a1861@agroscope.admin.ch>
+In-Reply-To: <aa1bd0934b724e78a798a7f7a13a1861@agroscope.admin.ch>
+From: Vesna Zupunski <vesnazupunski@gmail.com>
+Date: Fri, 13 Jun 2025 18:23:15 +0200
+X-Gm-Features: AX0GCFuQLNql-MksOk7jrh0ttEV_hotPr8qxKvMq2wW-Pw1K7WDKICSReM1Wm9k
+Message-ID: <CAG7ifDOuwt+1Usp7+UsrkufbEns8b+LXV_0Q=LKOZqtYNVO0NA@mail.gmail.com>
+Subject: Re: Joint Publication MIC Lupin / Oat - Initial evaluation
+To: yannik.schlup@agroscope.admin.ch
+Cc: matthias.herrmann@julius-kuehn.de, Selma.Schurack@julius-kuehn.de, 
+	vesnazup.nsseme@gmail.com, susanne.vogelgsang@agroscope.admin.ch, 
+	schlupy@student.ethz.ch, Radivoje Jevtic <radivoje.jevtic@gmail.com>
+Content-Type: multipart/alternative; boundary="0000000000003f32990637767766"
+Return-Path: vesnazupunski@gmail.com
+X-MS-Exchange-Organization-ExpirationStartTime: 13 Jun 2025 16:23:29.2766
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: 18d071b5-a826-49a6-8c53-08ddaa96a1cb
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: 9634a6ec-a266-45a3-ab14-74c4211fc582:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: ZR2PEPF0000012E:EE_|ZR2P278MB1148:EE_|ZR3P278MB1305:EE_
+X-MS-Exchange-Organization-AuthSource: ZR2PEPF0000012E.CHEP278.PROD.OUTLOOK.COM
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Office365-Filtering-Correlation-Id: 18d071b5-a826-49a6-8c53-08ddaa96a1cb
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-MS-Exchange-Organization-SCL: 1
+X-Microsoft-Antispam: BCL:0;ARA:13230040|7093399015|13003099007|8096899003;
+X-Forefront-Antispam-Report: CIP:2607:f8b0:4864:20::135;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail-il1-x135.google.com;PTR:mail-il1-x135.google.com;CAT:NONE;SFS:(13230040)(7093399015)(13003099007)(8096899003);DIR:INB;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Jun 2025 16:23:28.9624
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 18d071b5-a826-49a6-8c53-08ddaa96a1cb
+X-MS-Exchange-CrossTenant-Id: 9634a6ec-a266-45a3-ab14-74c4211fc582
+X-MS-Exchange-CrossTenant-AuthSource: ZR2PEPF0000012E.CHEP278.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: ZR2P278MB1148
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:14.7488763
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.8835.023
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910005)(944506478)(944626604)(4710137)(4712077)(4999163)(920097)(930097)(140003);
+X-Microsoft-Antispam-Message-Info:
+	=?utf-8?B?MGJIbHFFVm1CZXJocDAzcVZRRkl1aS9UMWJMcHV2ZmRFZkJZUE4xckI0REdT?=
+ =?utf-8?B?cjdJdFhYbndZc2xUYmlrVlBOQkdvaVdubnJNOGZNamRldHJxejQ1ZUNGWEtZ?=
+ =?utf-8?B?SjJLMERPZ0Y3UjkwTG5xc3dBTlhZWG56ZGJ2T0x4VlMvaUlmd1ZKSDJva3Zu?=
+ =?utf-8?B?YW4wOEVIOHFzVm9ma2NuUENzQ2ZhazBHQkFteDNiOTExNXpldEI1amR3aDAz?=
+ =?utf-8?B?Tzl3anRpRGtBbGhQRXBTaFgyQ1hCUHZxOFhPdzZ0N3JwWWZja05oZHpMNjVI?=
+ =?utf-8?B?VVl5d2JrVmFtMDM5RGhZOEFHRGgxRTNxNFQ5VWFLbU1NKzg5UHRPUUpXaUk3?=
+ =?utf-8?B?ckg3cFdla2VSS1RZbk9LWFJVeGFhVEdRV0JOWDcxbzQ0bnNYdDRmNXNnTGRr?=
+ =?utf-8?B?RWtldFNOZlQ4SXVxQjQ1bzVwQ2FNellNOVNrNzRDZG53SWZVV0JjanNYL1ZY?=
+ =?utf-8?B?NzhNTlRjR0kxaWxRTW0yYXp6azFtVG1JRVZCTEU1WkxkNEVodHhsaXZseHRq?=
+ =?utf-8?B?cWdVUlArVUVKL2NvekRTL1RxOTdZN1lFZlFJMkdkVERTdE02ZUE1UnZiWTRH?=
+ =?utf-8?B?Y00zekhodE9IMEpPUVF5NjNMajlwbTdSK29KWEFFQVAyZ0lFaHNYZEJKV1Vr?=
+ =?utf-8?B?aDVYbzVHWHVmMExPdGpzWlBqZ2YyV0xvNTI0UmUwTUxKcjhoNHM3ZDFNaGYx?=
+ =?utf-8?B?UGYyUHVKV0hBbHI3eEhkT0c0Q2ZlbmJJeTdQUGZ4VWM0WE0wcEdJTkh0bUJt?=
+ =?utf-8?B?dEg3UUQxcGNBTEdoczFoVmNHY2xBWDM0cXFEUXE1c3MxNXdhUnNLOURSUG16?=
+ =?utf-8?B?VHQxclpXRHpFU2pXQlU5VFM5U2d1SnA2UUVNQWxoSVhrellOOGdJZ3lwOG5Y?=
+ =?utf-8?B?ZTRWVzhkZndxcmdWbTlFcHBqaG9yQlFxZ0FWdkZ5SDFndThoME9aQ2dyOC9J?=
+ =?utf-8?B?NG5SSTE2WTZtaGdjUU5WZ2RwU2hOR1JkdDBaYVNleGFrWlRlenNxZko5YzEv?=
+ =?utf-8?B?aWJlUzhIMVpqcURLYk43Mk5uZzJjWjNBZUs1SnAxdGVuQ0FMb0JJTE9qckRI?=
+ =?utf-8?B?OU1IQ3RBZmZhWGZiQkdNejJ0VEROQ1ZGOHludjZOK3dNN1RpLzJHT3JsWDd3?=
+ =?utf-8?B?YWhNaU44aVBuWE91TUN3TkErWUJtMXlzZHBPOFBUVzU5NHFYL2pKa1J4SUY5?=
+ =?utf-8?B?MnR0elV3a2hISGZQcmJJNitkTGVDU3FrVWRGMWNHOVhsWG11UVFaeUQ3eGcx?=
+ =?utf-8?B?bm5DRkdzNllzdlVobmhUb0JXc1FqKzY3cFdiY1pLcm1NcGxtUndBZm4xYWpa?=
+ =?utf-8?B?ZjdiQ0g5cFFhYnZsd3oydkE0bzBheWxSVEYxN3poR0lsOFVnZ21jQzhob3ZR?=
+ =?utf-8?B?MmlubXVOL2h3K2ZuSC9WdXJJbFJORHcxRGlOeWVENjlTbkszNCtCMGVQM1Nl?=
+ =?utf-8?B?czVBa3E4SXJTbUt6NE5FZzNablprSHNrUy9KYWc3UXVLUE1XbDRYRCtrSDZy?=
+ =?utf-8?B?b2F1Y0sxdmtmdkFtWWg0dTJ6dUtSRGgvaVhPT1lWczhMNllDaWR4VjRRa2pZ?=
+ =?utf-8?B?Y1l5SHhyUTh6YnJVK0ZKYi9pdXVzRTBlcDZkNk9PWDFjSTRLZk8wcGFSYXM1?=
+ =?utf-8?B?QlFVMmg2dXZnT21nYWJVZmVlM3IrZFJwWVVQZ0FlR0U1eGdjcHNGOTRQMEF5?=
+ =?utf-8?B?WHlCSGFsZ2N0NG5STnBNK0FOcUUzTHRLSGpDRW1JVzBDa29QdEYxRkZVUm16?=
+ =?utf-8?B?NjAxeEZZT2NVcDU3Vk5Ya2R5L2dmY1lvanlaUG9GNk1MUHdWUWRkcjR1RUlS?=
+ =?utf-8?B?MVFxTWpqWXZmMEE4alVwOEVzV0FrWCtkV28xL1FPdzYzVmEvQmRSWmRJRWhE?=
+ =?utf-8?B?NFA5REpTVy84MEZkc0dUTno0eVhzL2J4MHpNVE5pbkNEcm1ma0k5emxwZFhH?=
+ =?utf-8?B?WVlTajhNcFJzWU5WOE5tQTVpcERxcWtINmUyLzVMajFiOVdlaG1VMnZIYlpy?=
+ =?utf-8?B?U0F4RjJuM3ExYWkxcHVqck9aeEpnTmFadHNlZzFIZ3B6akVhR3hMK3NqOUFn?=
+ =?utf-8?B?Q2hWaDNkSzFGZ3kvdnB6YlJtbi83R3pGYUhhdDI1VkFBSFFQTXY2cG9GQzF1?=
+ =?utf-8?B?ZUd4MTNrTVQrNmNPTC9KNFQ3QWZIb3R4WEw2bnRsejVlZjZlOUczMTd5b0xT?=
+ =?utf-8?B?RHg3TnBRcjh4MFo3VjhKY3hVMTBtUDhoaGtGei9aZDYycXJUdEptaGthL3RC?=
+ =?utf-8?B?c1p3Qy91czZRVWp3RDIySmxRdVBiTkx5NkoycUFhbmVubTRHSklMZHNYbS9V?=
+ =?utf-8?B?ZDNBRytmMmxVai9JTHM4cTZMQkdzL3pBdjZoRWNESEppK2lhZTJ5M3Y2NkZN?=
+ =?utf-8?B?czdRS3JMelR0L1dNVVNXcGx0MjhGa2tTdUtnK3NjK3VySURZNUxjK3lHYzIz?=
+ =?utf-8?B?akVvT3hhUFZSQWRJaGtSM05kMGxQVUVrbU56bDl0cVhvNURUR1IxYjdiVjBW?=
+ =?utf-8?B?ODluSEVxWlVRUFBkUGFKYnowQmx4TGpVYVUrNjlnYStzNnB1OC9aRnpCa05G?=
+ =?utf-8?B?aXBmSnhPR2k4KzArU0hFU1FqN3JmTVNmTkhVK2d4MnlaMm5vV3J5a05zRnR6?=
+ =?utf-8?B?Y1FMV0xjYUZYdXV4d0V6eG1LMS80a2IxcXpIOTdQaG9rQjYyUDZvNHE3WlI2?=
+ =?utf-8?B?dkNSR2FzS2p5U2ZXSEJQU2dwR2Z3amltR0gxM3dPN1hRSXJNdmdHMjkzQTVW?=
+ =?utf-8?B?eDQzQUt3VXVlL2thVU9zdlpkaHV2OFFteWR4TDZ3cHpqWW5IaFNWbUR0TkY1?=
+ =?utf-8?B?YjZtN3NqN1dVaXkyRzRpTHdnNW01bTRiRjFyU2hNTEVPa0lZWVpLSmhnMzlW?=
+ =?utf-8?B?Y2RtbjBhTld3Q3RablFFU3cxcXNCL2JOZ0UvN0RHV2tWRUJ6LzZwRlhGZ2hJ?=
+ =?utf-8?B?ejNpZ2xPWlZHVi8ycWFkTU0zSk53NjEvRlpFaFBncnpJbVZLd0NKdkwyMmdx?=
+ =?utf-8?B?bnFnenZ1MDh5WFNZMHBBK3MxdVVzY1ptelBUaGcxWVRqbjZqczQ5SE84NUFX?=
+ =?utf-8?B?VHV4RlJhcGVKcktuMGpMVmlNcHBLSlllMUhoSTFtZ1Zjd1pEOUphNmlCYU5a?=
+ =?utf-8?B?ZTRmWiszRWdzTFJWUGV5dnc0VlU5T0tseEQ5TTVrbUVkOExmeE5maEgyMFlo?=
+ =?utf-8?Q?mt8k3VAZpZuYEX2W9ABFJq0YB/cQ?=
+MIME-Version: 1.0
+
+--0000000000003f32990637767766
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Dear Yannik,
+Last year, when I was writing D3.5 and D3.6, I was in contact with Andrea
+Gallehr and Kathrin Neubeck.
+andrea.gallehr@dottenfelderhof.dekathrin.neubeck@dottenfelderhof.de
+
+Kind regards,
+Vesna
+
+On Fri, Jun 13, 2025 at 5:57=E2=80=AFPM <yannik.schlup@agroscope.admin.ch> =
+wrote:
+
+> Dear all
+>
+>
+> Thank you to you too Vesna to follow up :) Brief question to all,
+> according to the proposal we have
+>
+> the spring lupin/spring oats trials performed in JKI, DH, IFVCNS, WBF, fo=
+r
+> now we have feedback from IFVCNS and JKI but DH is missing. Who do we bes=
+t
+> contact to receive their information?
+>
+>
+> I will be on holidays the coming week and follow up after, wishing you al=
+l
+> a nice weekend.
+>
+> Best wishes
+>
+> Yannik
+>
+> ________________________________
+> Von: Schlup Yannik AGROSCOPE
+> Gesendet: Freitag, 13. Juni 2025 10:01:20
+> An: Matthias Herrmann; Schurack, Selma; Vesna Zupunski; Vesna Zupunski
+> Cc: Vogelgsang Susanne AGROSCOPE; Schlup Yannik
+> Betreff: AW: Joint Publication MIC Lupin / Oat - Initial evaluation
+>
+>
+> Dear all
+>
+>
+> Maybe you have overseen the email below, please respond soon. Selma and
+> Matthias, thank you for already having sent the information on your trial=
+.
+> Once all partners have responded I'll organise a brief meeting.
+>
+>
+> Best wishes and enjoy your weekends
+>
+> Yannik
+>
+> ________________________________
+> Von: Schlup Yannik AGROSCOPE
+> Gesendet: Montag, 26. Mai 2025 18:54:42
+> An: Matthias Herrmann; Schurack, Selma; Vesna Zupunski; Vesna Zupunski
+> Cc: Vogelgsang Susanne AGROSCOPE; Schlup Yannik
+> Betreff: Joint Publication MIC Lupin / Oat - Initial evaluation
+>
+> Dear all,
+>
+> Susanne has just informed me about the status of the joint publication.
+> I=E2=80=99m gladly taking over the coordination, and at the same time nee=
+d to point
+> out that my capacity is limited due to finishing the PhD within half a
+> year. Do you all agree to this publication being coordinated by me?
+>
+> In a first step, please be so kind and send me
+>
+>   *   A brief description of your study design especially
+>      *   1 design (RCBD, 4 blocks?), number of sites and years, failed
+> trials
+>      *   2 sowing ratios, seeding numbers (and germination rate)
+>      *   3 fertilization applied and 4 the local requirements/laws
+>      *   5 sowing dates and harvest dates and 6 deviation from how this i=
+s
+> usually handled in your country (e.g. 4 weeks earlier)
+>      *   6 climate extremes that were yield relevant
+>   *   A brief description of the wrangled data
+>      *   7 All recorded variables / attributes
+>      *   8 Anomalies (e.g. missing yield and yield quality data year 2022=
+,
+> in location 2)
+>
+> You can answer in German or English, whatever works easier for you. Once
+> received I=E2=80=99ll gladly set up a meeting to discuss the next steps. =
+I=E2=80=99m at my
+> final draft of the Lupin-Oat publication for the trials conducted in CH, =
+we
+> can use major elements thereof as basis to our joint publication =F0=9F=
+=98=8A
+>
+> Do you remember who has participated in the MIC Lupin / Oat, are we
+> missing someone (for now we are three countries)?
+>
+> Could I ask you to please respond to this email by June 11, or let me kno=
+w
+> if this is not possible?
+>
+> Thank you and best wishes
+> Yannik
+>
+>
+> _______________________________________________
+> Yannik Schlup
+> Doctoral student
+> Agroscope Research Group Extension Arable Crops
+> ETH Z=C3=BCrich Sustainable Agroecosystems
+>
+> Federal Department of Economic Affairs, Education and Research EAER
+> Agroscope
+> Competence Division Plant and Plant Products
+>
+> Reckenholzstrasse 191, 8046 Zurich, Switzerland
+> Tel +41 (0) 58 481 2896
+> yannik.schlup@agroscope.admin.ch<mailto:yannik.schlup@agroscope.admin.ch>=
+;
+> schlupy@student.ethz.ch
+> www.agroscope.ch<http://www.agroscope.ch/> I Good food, healthy
+> environment
+> H 2020-Project CROPDIVA: https://cordis.europa.eu/project/id/101000847
+> [logo_CROPDIVA]
+>
+>
+>
+>
+
+--0000000000003f32990637767766
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><d=
+iv dir=3D"ltr">Dear Yannik,<br>Last year, when I was writing D3.5 and D3.6,=
+ I was in contact with Andrea Gallehr and Kathrin Neubeck.<br><h3 style=3D"=
+overflow:hidden;font-size:0.75rem;margin:inherit;text-overflow:ellipsis;fon=
+t-family:&quot;Google Sans&quot;,Roboto,RobotoDraft,Helvetica,Arial,sans-se=
+rif;color:rgb(95,99,104);line-height:20px"><span role=3D"gridcell" style=3D=
+"outline:none"><span name=3D"andrea.gallehr@dottenfelderhof.de" style=3D"co=
+lor:rgb(31,31,31);font-size:0.875rem;display:inline;vertical-align:top;line=
+-height:20px"><span style=3D"vertical-align:top;font-weight:normal"><a href=
+=3D"mailto:andrea.gallehr@dottenfelderhof.de" target=3D"_blank">andrea.gall=
+ehr@dottenfelderhof.de</a></span></span></span></h3><h3 style=3D"overflow:h=
+idden;font-size:0.75rem;font-weight:inherit;margin:inherit;text-overflow:el=
+lipsis;font-family:&quot;Google Sans&quot;,Roboto,RobotoDraft,Helvetica,Ari=
+al,sans-serif;color:rgb(95,99,104);line-height:20px"><span style=3D"font-fa=
+mily:Arial,Helvetica,sans-serif;font-size:small;color:rgb(34,34,34)"><a hre=
+f=3D"mailto:kathrin.neubeck@dottenfelderhof.de" target=3D"_blank">kathrin.n=
+eubeck@dottenfelderhof.de</a></span></h3><div><br></div><div>Kind regards,<=
+/div><div>Vesna</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
+class=3D"gmail_attr">On Fri, Jun 13, 2025 at 5:57=E2=80=AFPM &lt;<a href=3D=
+"mailto:yannik.schlup@agroscope.admin.ch" target=3D"_blank">yannik.schlup@a=
+groscope.admin.ch</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote"=
+ style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);p=
+adding-left:1ex">Dear all<br>
+<br>
+<br>
+Thank you to you too Vesna to follow up :) Brief question to all, according=
+ to the proposal we have<br>
+<br>
+the spring lupin/spring oats trials performed in JKI, DH, IFVCNS, WBF, for =
+now we have feedback from IFVCNS and JKI but DH is missing. Who do we best =
+contact to receive their information?<br>
+<br>
+<br>
+I will be on holidays the coming week and follow up after, wishing you all =
+a nice weekend.<br>
+<br>
+Best wishes<br>
+<br>
+Yannik<br>
+<br>
+________________________________<br>
+Von: Schlup Yannik AGROSCOPE<br>
+Gesendet: Freitag, 13. Juni 2025 10:01:20<br>
+An: Matthias Herrmann; Schurack, Selma; Vesna Zupunski; Vesna Zupunski<br>
+Cc: Vogelgsang Susanne AGROSCOPE; Schlup Yannik<br>
+Betreff: AW: Joint Publication MIC Lupin / Oat - Initial evaluation<br>
+<br>
+<br>
+Dear all<br>
+<br>
+<br>
+Maybe you have overseen the email below, please respond soon. Selma and Mat=
+thias, thank you for already having sent the information on your trial. Onc=
+e all partners have responded I'll organise a brief meeting.<br>
+<br>
+<br>
+Best wishes and enjoy your weekends<br>
+<br>
+Yannik<br>
+<br>
+________________________________<br>
+Von: Schlup Yannik AGROSCOPE<br>
+Gesendet: Montag, 26. Mai 2025 18:54:42<br>
+An: Matthias Herrmann; Schurack, Selma; Vesna Zupunski; Vesna Zupunski<br>
+Cc: Vogelgsang Susanne AGROSCOPE; Schlup Yannik<br>
+Betreff: Joint Publication MIC Lupin / Oat - Initial evaluation<br>
+<br>
+Dear all,<br>
+<br>
+Susanne has just informed me about the status of the joint publication. I=
+=E2=80=99m gladly taking over the coordination, and at the same time need t=
+o point out that my capacity is limited due to finishing the PhD within hal=
+f a year. Do you all agree to this publication being coordinated by me?<br>
+<br>
+In a first step, please be so kind and send me<br>
+<br>
+&nbsp; *&nbsp; &nbsp;A brief description of your study design especially<br=
+>
+&nbsp; &nbsp; &nbsp;*&nbsp; &nbsp;1 design (RCBD, 4 blocks?), number of sit=
+es and years, failed trials<br>
+&nbsp; &nbsp; &nbsp;*&nbsp; &nbsp;2 sowing ratios, seeding numbers (and ger=
+mination rate)<br>
+&nbsp; &nbsp; &nbsp;*&nbsp; &nbsp;3 fertilization applied and 4 the local r=
+equirements/laws<br>
+&nbsp; &nbsp; &nbsp;*&nbsp; &nbsp;5 sowing dates and harvest dates and 6 de=
+viation from how this is usually handled in your country (e.g. 4 weeks earl=
+ier)<br>
+&nbsp; &nbsp; &nbsp;*&nbsp; &nbsp;6 climate extremes that were yield releva=
+nt<br>
+&nbsp; *&nbsp; &nbsp;A brief description of the wrangled data<br>
+&nbsp; &nbsp; &nbsp;*&nbsp; &nbsp;7 All recorded variables / attributes<br>
+&nbsp; &nbsp; &nbsp;*&nbsp; &nbsp;8 Anomalies (e.g. missing yield and yield=
+ quality data year 2022, in location 2)<br>
+<br>
+You can answer in German or English, whatever works easier for you. Once re=
+ceived I=E2=80=99ll gladly set up a meeting to discuss the next steps. I=E2=
+=80=99m at my final draft of the Lupin-Oat publication for the trials condu=
+cted in CH, we can use major elements thereof as basis to our joint publica=
+tion =F0=9F=98=8A<br>
+<br>
+Do you remember who has participated in the MIC Lupin / Oat, are we missing=
+ someone (for now we are three countries)?<br>
+<br>
+Could I ask you to please respond to this email by June 11, or let me know =
+if this is not possible?<br>
+<br>
+Thank you and best wishes<br>
+Yannik<br>
+<br>
+<br>
+_______________________________________________<br>
+Yannik Schlup<br>
+Doctoral student<br>
+Agroscope Research Group Extension Arable Crops<br>
+ETH Z=C3=BCrich Sustainable Agroecosystems<br>
+<br>
+Federal Department of Economic Affairs, Education and Research EAER<br>
+Agroscope<br>
+Competence Division Plant and Plant Products<br>
+<br>
+Reckenholzstrasse 191, 8046 Zurich, Switzerland<br>
+Tel +41 (0) 58 481 2896<br>
+<a href=3D"mailto:yannik.schlup@agroscope.admin.ch" target=3D"_blank">yanni=
+k.schlup@agroscope.admin.ch</a>&lt;mailto:<a href=3D"mailto:yannik.schlup@a=
+groscope.admin.ch" target=3D"_blank">yannik.schlup@agroscope.admin.ch</a>&g=
+t;; <a href=3D"mailto:schlupy@student.ethz.ch" target=3D"_blank">schlupy@st=
+udent.ethz.ch</a><br>
+<a href=3D"http://www.agroscope.ch" rel=3D"noreferrer" target=3D"_blank">ww=
+w.agroscope.ch</a>&lt;<a href=3D"http://www.agroscope.ch/" rel=3D"noreferre=
+r" target=3D"_blank">http://www.agroscope.ch/</a>&gt; I Good food, healthy =
+environment<br>
+H 2020-Project CROPDIVA: <a href=3D"https://cordis.europa.eu/project/id/101=
+000847" rel=3D"noreferrer" target=3D"_blank">https://cordis.europa.eu/proje=
+ct/id/101000847</a><br>
+[logo_CROPDIVA]<br>
+<br>
+<br>
+<br>
+</blockquote></div>
+
+--0000000000003f32990637767766--

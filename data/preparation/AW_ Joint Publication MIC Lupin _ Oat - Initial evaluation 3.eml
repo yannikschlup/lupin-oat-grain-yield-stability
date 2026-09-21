@@ -1,0 +1,235 @@
+Received: from ZRAP278MB0080.CHEP278.PROD.OUTLOOK.COM (2603:10a6:910:13::15)
+ by ZR3P278MB1305.CHEP278.PROD.OUTLOOK.COM with HTTPS; Fri, 13 Jun 2025
+ 08:01:25 +0000
+Received: from ZR2P278CA0033.CHEP278.PROD.OUTLOOK.COM (2603:10a6:910:47::9) by
+ ZRAP278MB0080.CHEP278.PROD.OUTLOOK.COM (2603:10a6:910:13::15) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.8835.19; Fri, 13 Jun 2025 08:01:23 +0000
+Received: from ZRH2EPF00000151.CHEP278.PROD.OUTLOOK.COM
+ (2603:10a6:910:47:cafe::cb) by ZR2P278CA0033.outlook.office365.com
+ (2603:10a6:910:47::9) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.8835.25 via Frontend Transport; Fri,
+ 13 Jun 2025 08:01:23 +0000
+Authentication-Results: spf=pass (sender IP is 162.23.22.175)
+ smtp.mailfrom=agroscope.admin.ch; dkim=pass (signature was verified)
+ header.d=agroscope.admin.ch;dmarc=pass action=none
+ header.from=agroscope.admin.ch;compauth=pass reason=100
+Received-SPF: Pass (protection.outlook.com: domain of agroscope.admin.ch
+ designates 162.23.22.175 as permitted sender)
+ receiver=protection.outlook.com; client-ip=162.23.22.175;
+ helo=mailout03.mail.admin.ch; pr=C
+Received: from mailout03.mail.admin.ch (162.23.22.175) by
+ ZRH2EPF00000151.mail.protection.outlook.com (10.167.241.21) with Microsoft
+ SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.8835.15
+ via Frontend Transport; Fri, 13 Jun 2025 08:01:23 +0000
+Received: from mailhost04.mail.admin.ch ([10.176.138.199])
+	by mx03.mail.admin.ch with ESMTPS id 55D81LKc010013-55D81LKe010013
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NO);
+	Fri, 13 Jun 2025 10:01:21 +0200
+From: <yannik.schlup@agroscope.admin.ch>
+To: <matthias.herrmann@julius-kuehn.de>, <Selma.Schurack@julius-kuehn.de>,
+	<vesnazupunski@gmail.com>, <vesnazup.nsseme@gmail.com>
+CC: <susanne.vogelgsang@agroscope.admin.ch>, <schlupy@student.ethz.ch>
+Subject: AW: Joint Publication MIC Lupin / Oat - Initial evaluation
+Thread-Topic: Joint Publication MIC Lupin / Oat - Initial evaluation
+Thread-Index: AdvOXoySHxsCNhYQRoi4yZ7vDUELRwN2kLJI
+Date: Fri, 13 Jun 2025 08:01:20 +0000
+Message-ID: <b103e285509f4582bc49de9058f84180@agroscope.admin.ch>
+References: <eb346e57f64e456c84c6fe0a21f6fc91@agroscope.admin.ch>
+In-Reply-To: <eb346e57f64e456c84c6fe0a21f6fc91@agroscope.admin.ch>
+Accept-Language: de-CH, en-US
+Content-Language: de-CH
+X-MS-Has-Attach: yes
+X-MS-TNEF-Correlator:
+Content-Type: multipart/related;
+	boundary="_002_b103e285509f4582bc49de9058f84180agroscopeadminch_";
+	type="text/plain"
+X-FE-Attachment-Name: image001.jpg
+X-FEAS-Client-IP: 10.176.138.199
+X-FE-Policy-ID: 1:4:3:SYSTEM
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; d=agroscope.admin.ch; s=dkimkey1; c=relaxed/relaxed;
+ h=from:to:cc:subject:date:message-id:references:content-type:mime-version;
+ bh=8dfk+YKuYY5+82KR7RooU6iOeKstKmvOvJ2g/VQlICM=;
+ b=tPLhYecEiKNTyVbJWecLdds36xYaLXfr2P3B3NdZUEMY1Lup4Bu6cdzC4iDawmQ0/S/KF+cKLoUD
+	g+gIfVUWBP16TCQURTp2RmOADLXUONZXF8ks0ryGE9yqtToVVoAGz00c4RWYowQOWKmlc99lXHlD
+	OeY7t2iJN2kdAT84/UY=
+Return-Path: yannik.schlup@agroscope.admin.ch
+X-MS-Exchange-Organization-ExpirationStartTime: 13 Jun 2025 08:01:23.1379
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: 13314158-5ba4-4a5c-9966-08ddaa507d37
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: 9634a6ec-a266-45a3-ab14-74c4211fc582:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: ZRH2EPF00000151:EE_|ZRAP278MB0080:EE_|ZR3P278MB1305:EE_
+X-MS-Exchange-Organization-AuthSource: ZRH2EPF00000151.CHEP278.PROD.OUTLOOK.COM
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Office365-Filtering-Correlation-Id: 13314158-5ba4-4a5c-9966-08ddaa507d37
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-MS-Exchange-Organization-SCL: 1
+X-Microsoft-Antispam: BCL:0;ARA:13230040|13003099007|4053099003;
+X-Forefront-Antispam-Report: CIP:162.23.22.175;CTRY:CH;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mailout03.mail.admin.ch;PTR:mailout03.mail.admin.ch;CAT:NONE;SFS:(13230040)(13003099007)(4053099003);DIR:INB;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Jun 2025 08:01:23.0320
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 13314158-5ba4-4a5c-9966-08ddaa507d37
+X-MS-Exchange-CrossTenant-Id: 9634a6ec-a266-45a3-ab14-74c4211fc582
+X-MS-Exchange-CrossTenant-AuthSource: ZRH2EPF00000151.CHEP278.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: ZRAP278MB0080
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:02.8184741
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.8835.023
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910005)(944506478)(944626604)(920097)(930097)(140003);
+X-Microsoft-Antispam-Message-Info:
+	=?utf-8?B?ektqV1hLNEcva0pZR0JlbW84Qlg4QUxTRkJ5UXFxVFVlZUpBeExHWklTSFBa?=
+ =?utf-8?B?OWxSc1ViL2J6QXN4Wkw1VTYvSWp2OXZmVVRvME1uZC9wOEFlSE1FQ1FCdEY2?=
+ =?utf-8?B?V3BabExNTkhrOHgyVktzT3d4WHNwYThIMy9yM1V2bzUxdERwUTdhS0lDTnFr?=
+ =?utf-8?B?cUZPZHpSUVpjaHlJVmpMMUFNeVFxZHppQjRodWttN3hZUGlCSkRsdmlLQ0Ns?=
+ =?utf-8?B?WklRWnhsczAwaDNzY2tUbjVQQnhMOWZML0FYcU5hZ2loUi8xaUU1YVJaKzBV?=
+ =?utf-8?B?Q2Q3bS9zTlFkSE50Wm5SMUl4YlQzOTNGMitJdFRXdmdsclZpR0lITVVML0dt?=
+ =?utf-8?B?dTdWUXdDelhHMU40ckZ5TDlEaGlaam1rTC9qdm5oRy9keFdGN05wUzNGQlQ1?=
+ =?utf-8?B?LzdXWEI2WXlWcXJ0QkdETVBud0VucWY2WXR0Y0tYYkJPY09pR1l3NXVnRXlj?=
+ =?utf-8?B?UUVaMURDcUVXbjVSOXFpQSs1NXE5UjhDN3RQU216T0pPOXdKUUlXQVh6OG5w?=
+ =?utf-8?B?empjcEF3Y3REVGhyNmFlNEpVRjFyQnBQbzJtQk00K3dFRFZHNnBQcDFOOXFi?=
+ =?utf-8?B?WlRsQWJ1bm1hQVVoREdmQU80cTBYRVJrNzZCL0hnT3Bic1JMUmMyd3k2dTly?=
+ =?utf-8?B?Q3Z4R25xVURtMkllSExhTXZkUnhmMHQ3UGJPS3hNYURtb3VPY2VoTnZJM21l?=
+ =?utf-8?B?M0hqNHEvME1PZlhGeDJFR2x2OHNMRUJDYkhwaUloRlp1bGM5dk5XRm1zMjZh?=
+ =?utf-8?B?STBQeVVxd0U1REVQRXZuVk5wREx2NGwwYUtZOE9lamk1SWtCaXdZQ0xFR2pi?=
+ =?utf-8?B?VWdDQjNnZGdKb2Vhc0RRSVhiZDJWbkQyNU05d2pKVHo4UzdpbmM4aVp4R1I4?=
+ =?utf-8?B?RVNjeHc4WjUrNEhnZlJmUXhrdmJxNXlEWGVTNTFWYlJVV2Z0b01iZS92SzZo?=
+ =?utf-8?B?Tk9jeUs4U3gvQUswM08zM0RaZEVvN0FueFlHaUFxK0cxR1VzSW1Ya3VYdTh3?=
+ =?utf-8?B?bzJKR2NyejNEampkdVp4eEJ6Vm1IVE1xREdTYWhQTERkSXlDMnJvWlo4VE95?=
+ =?utf-8?B?N1JMTm5sc0paVUR4TFl4QXpTeVdFNG90ZzdYV2dGUFlGMUFadkpnc3AyaVM5?=
+ =?utf-8?B?MEdyd2RmWlpGQk9BK20zNGZpcmQybTcxUDd4dEl5bmVzcjNxZ0YrQngxc3pi?=
+ =?utf-8?B?a2VIMzR4dm5McXVSZW83bzRWcmlJVzFSS0ZEQTI3RjhneFIvdlVucERxcndn?=
+ =?utf-8?B?R3JIVlBmL1BzNzR1R0g5UDhCWTlRVzF6bnJWOVIvKzNOcVpqRmdhdkhvY0JU?=
+ =?utf-8?B?djVhV0RyZGpBWlJPVU5iU3NKSCtaeXJSNTJLem1oOGI2ZkNmWmRZQ0VZc1Ix?=
+ =?utf-8?B?UWRkeXNxSEdtY2tiUDZTYzFQMHdGRGxoaVBBSHU1SG95S21iR21Hc0xtbVA0?=
+ =?utf-8?B?K3BCV2pvZmpTbWFwVWVPRWIrdTFiVjdEOHYwbi9MRUJJWTFyWXRsZUZxeUtC?=
+ =?utf-8?B?TzVORlMzQUtLSnVwQ2VmUXFLYzU2SityS2tEUGVhcmVZN3RuWkVEcmFhTjJC?=
+ =?utf-8?B?dTNpTFM2RG5ncWtPY280NDBkejJ4NU5qWUtMYmQ2VlBvbDREbUE4dXpraldY?=
+ =?utf-8?B?UmsyY25pYWlaQWEyVTFVQUZIOFdVUVprYXhmVHYxYkN0MEk2cXZQcmt1YzNN?=
+ =?utf-8?B?MG5wNVBQTW1jQ0xUTnlTSjBYSnlCMEorcWxMWTlQc0R0YnlpTSsvWmNTUHFo?=
+ =?utf-8?B?SjFuWTVGc2xSeHFSalVxUk1XZXovTTFQaG5sSE5yeFQvY1pMWFVlSG1NQ0M3?=
+ =?utf-8?B?R1QzRGp2VkduNFJObHkvdkE0YmNtZzJEc1hxaWpDcTZzbFRkZWU4SWcrYUNY?=
+ =?utf-8?B?eTUraHNiaEdHZVNUb3hVTzRQaXQySDFpY3g5QURSaExFUVorK242QlVVdElL?=
+ =?utf-8?B?TmZzNXV5a0UvSGtnOVc2bjVkTHRseFpVUlEwbVVmcnBvL0MxZmQxSGk3RWFn?=
+ =?utf-8?B?UUtRV1o4N3p4OW5xS2FMSFYwTGNiUklpK0lYS1M5VUd3R01aeHJ3VWpDRzUy?=
+ =?utf-8?B?blpIUUIybG9OalVxNStKY3JCcWZPWS9LWU9meHR0THBJS1dxZFdjbHNjQWkw?=
+ =?utf-8?B?MTlPNWRSODVFUXJDajRBQlh3Q2FYakNrZWphT2dCR3dOZUV6ZmZkQWh6Qkdp?=
+ =?utf-8?B?dHQvZFlkdkUxRUpHV0ZPS1ViWEwwSTZlRDd5dGpzanZMY01qSGpqTEJzeTVa?=
+ =?utf-8?B?UVJ5M2Zzb0ppWDUzWVdNMDNNL0o2K0RJWTA2eFJ2cWMyaDVYeC9taURYV0xh?=
+ =?utf-8?B?ejdlaXpHN2xBdVg4TitRQlA5TlRReTBKQ2NTSDR2NDE3OXczTE11Y0NPdm82?=
+ =?utf-8?B?Uncyc0VaNE1YZnBhUkxPU1JJeEVYamJESVo0NGgvNVpyMWpmb21zR0tYdUc3?=
+ =?utf-8?B?aWFFeHpBQi9HTWdDMXdRcVdqUFp3QWladTdyWGI5ZnFwK0wxY2xCQXlISEJI?=
+ =?utf-8?B?cnlFdmdTeGc2YXpLNXNMRWVtRGxCQTVCOEcxUVU5VTVzSjhYL1l5TThWVnpm?=
+ =?utf-8?B?WU5zdlU1TnJXbVV5UjVVQUdYVXN1bTZHTkZDZ0NzRDlobzcySHVuSzZnM0o3?=
+ =?utf-8?B?dkRCYWwzbG16R09CYVIveitCbGpITkJia0xkS2FCZDMzbWdCSExoc2U0dmdT?=
+ =?utf-8?Q?jNF4?=
+MIME-Version: 1.0
+
+--_002_b103e285509f4582bc49de9058f84180agroscopeadminch_
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+
+RGVhciBhbGwNCg0KDQpNYXliZSB5b3UgaGF2ZSBvdmVyc2VlbiB0aGUgZW1haWwgYmVsb3csIHBs
+ZWFzZSByZXNwb25kIHNvb24uIFNlbG1hIGFuZCBNYXR0aGlhcywgdGhhbmsgeW91IGZvciBhbHJl
+YWR5IGhhdmluZyBzZW50IHRoZSBpbmZvcm1hdGlvbiBvbiB5b3VyIHRyaWFsLiBPbmNlIGFsbCBw
+YXJ0bmVycyBoYXZlIHJlc3BvbmRlZCBJJ2xsIG9yZ2FuaXNlIGEgYnJpZWYgbWVldGluZy4NCg0K
+DQpCZXN0IHdpc2hlcyBhbmQgZW5qb3kgeW91ciB3ZWVrZW5kcw0KDQpZYW5uaWsNCg0KX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18NClZvbjogU2NobHVwIFlhbm5payBBR1JPU0NPUEUN
+Ckdlc2VuZGV0OiBNb250YWcsIDI2LiBNYWkgMjAyNSAxODo1NDo0Mg0KQW46IE1hdHRoaWFzIEhl
+cnJtYW5uOyBTY2h1cmFjaywgU2VsbWE7IFZlc25hIFp1cHVuc2tpOyBWZXNuYSBadXB1bnNraQ0K
+Q2M6IFZvZ2VsZ3NhbmcgU3VzYW5uZSBBR1JPU0NPUEU7IFNjaGx1cCBZYW5uaWsNCkJldHJlZmY6
+IEpvaW50IFB1YmxpY2F0aW9uIE1JQyBMdXBpbiAvIE9hdCAtIEluaXRpYWwgZXZhbHVhdGlvbg0K
+DQpEZWFyIGFsbCwNCg0KU3VzYW5uZSBoYXMganVzdCBpbmZvcm1lZCBtZSBhYm91dCB0aGUgc3Rh
+dHVzIG9mIHRoZSBqb2ludCBwdWJsaWNhdGlvbi4gSeKAmW0gZ2xhZGx5IHRha2luZyBvdmVyIHRo
+ZSBjb29yZGluYXRpb24sIGFuZCBhdCB0aGUgc2FtZSB0aW1lIG5lZWQgdG8gcG9pbnQgb3V0IHRo
+YXQgbXkgY2FwYWNpdHkgaXMgbGltaXRlZCBkdWUgdG8gZmluaXNoaW5nIHRoZSBQaEQgd2l0aGlu
+IGhhbGYgYSB5ZWFyLiBEbyB5b3UgYWxsIGFncmVlIHRvIHRoaXMgcHVibGljYXRpb24gYmVpbmcg
+Y29vcmRpbmF0ZWQgYnkgbWU/DQoNCkluIGEgZmlyc3Qgc3RlcCwgcGxlYXNlIGJlIHNvIGtpbmQg
+YW5kIHNlbmQgbWUNCg0KICAqICAgQSBicmllZiBkZXNjcmlwdGlvbiBvZiB5b3VyIHN0dWR5IGRl
+c2lnbiBlc3BlY2lhbGx5DQogICAgICogICAxIGRlc2lnbiAoUkNCRCwgNCBibG9ja3M/KSwgbnVt
+YmVyIG9mIHNpdGVzIGFuZCB5ZWFycywgZmFpbGVkIHRyaWFscw0KICAgICAqICAgMiBzb3dpbmcg
+cmF0aW9zLCBzZWVkaW5nIG51bWJlcnMgKGFuZCBnZXJtaW5hdGlvbiByYXRlKQ0KICAgICAqICAg
+MyBmZXJ0aWxpemF0aW9uIGFwcGxpZWQgYW5kIDQgdGhlIGxvY2FsIHJlcXVpcmVtZW50cy9sYXdz
+DQogICAgICogICA1IHNvd2luZyBkYXRlcyBhbmQgaGFydmVzdCBkYXRlcyBhbmQgNiBkZXZpYXRp
+b24gZnJvbSBob3cgdGhpcyBpcyB1c3VhbGx5IGhhbmRsZWQgaW4geW91ciBjb3VudHJ5IChlLmcu
+IDQgd2Vla3MgZWFybGllcikNCiAgICAgKiAgIDYgY2xpbWF0ZSBleHRyZW1lcyB0aGF0IHdlcmUg
+eWllbGQgcmVsZXZhbnQNCiAgKiAgIEEgYnJpZWYgZGVzY3JpcHRpb24gb2YgdGhlIHdyYW5nbGVk
+IGRhdGENCiAgICAgKiAgIDcgQWxsIHJlY29yZGVkIHZhcmlhYmxlcyAvIGF0dHJpYnV0ZXMNCiAg
+ICAgKiAgIDggQW5vbWFsaWVzIChlLmcuIG1pc3NpbmcgeWllbGQgYW5kIHlpZWxkIHF1YWxpdHkg
+ZGF0YSB5ZWFyIDIwMjIsIGluIGxvY2F0aW9uIDIpDQoNCllvdSBjYW4gYW5zd2VyIGluIEdlcm1h
+biBvciBFbmdsaXNoLCB3aGF0ZXZlciB3b3JrcyBlYXNpZXIgZm9yIHlvdS4gT25jZSByZWNlaXZl
+ZCBJ4oCZbGwgZ2xhZGx5IHNldCB1cCBhIG1lZXRpbmcgdG8gZGlzY3VzcyB0aGUgbmV4dCBzdGVw
+cy4gSeKAmW0gYXQgbXkgZmluYWwgZHJhZnQgb2YgdGhlIEx1cGluLU9hdCBwdWJsaWNhdGlvbiBm
+b3IgdGhlIHRyaWFscyBjb25kdWN0ZWQgaW4gQ0gsIHdlIGNhbiB1c2UgbWFqb3IgZWxlbWVudHMg
+dGhlcmVvZiBhcyBiYXNpcyB0byBvdXIgam9pbnQgcHVibGljYXRpb24g8J+Yig0KDQpEbyB5b3Ug
+cmVtZW1iZXIgd2hvIGhhcyBwYXJ0aWNpcGF0ZWQgaW4gdGhlIE1JQyBMdXBpbiAvIE9hdCwgYXJl
+IHdlIG1pc3Npbmcgc29tZW9uZSAoZm9yIG5vdyB3ZSBhcmUgdGhyZWUgY291bnRyaWVzKT8NCg0K
+Q291bGQgSSBhc2sgeW91IHRvIHBsZWFzZSByZXNwb25kIHRvIHRoaXMgZW1haWwgYnkgSnVuZSAx
+MSwgb3IgbGV0IG1lIGtub3cgaWYgdGhpcyBpcyBub3QgcG9zc2libGU/DQoNClRoYW5rIHlvdSBh
+bmQgYmVzdCB3aXNoZXMNCllhbm5paw0KDQoNCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fDQpZYW5uaWsgU2NobHVwDQpEb2N0b3JhbCBzdHVkZW50DQpBZ3Jv
+c2NvcGUgUmVzZWFyY2ggR3JvdXAgRXh0ZW5zaW9uIEFyYWJsZSBDcm9wcw0KRVRIIFrDvHJpY2gg
+U3VzdGFpbmFibGUgQWdyb2Vjb3N5c3RlbXMNCg0KRmVkZXJhbCBEZXBhcnRtZW50IG9mIEVjb25v
+bWljIEFmZmFpcnMsIEVkdWNhdGlvbiBhbmQgUmVzZWFyY2ggRUFFUg0KQWdyb3Njb3BlDQpDb21w
+ZXRlbmNlIERpdmlzaW9uIFBsYW50IGFuZCBQbGFudCBQcm9kdWN0cw0KDQpSZWNrZW5ob2x6c3Ry
+YXNzZSAxOTEsIDgwNDYgWnVyaWNoLCBTd2l0emVybGFuZA0KVGVsICs0MSAoMCkgNTggNDgxIDI4
+OTYNCnlhbm5pay5zY2hsdXBAYWdyb3Njb3BlLmFkbWluLmNoPG1haWx0bzp5YW5uaWsuc2NobHVw
+QGFncm9zY29wZS5hZG1pbi5jaD47IHNjaGx1cHlAc3R1ZGVudC5ldGh6LmNoDQp3d3cuYWdyb3Nj
+b3BlLmNoPGh0dHA6Ly93d3cuYWdyb3Njb3BlLmNoLz4gSSBHb29kIGZvb2QsIGhlYWx0aHkgZW52
+aXJvbm1lbnQNCkggMjAyMC1Qcm9qZWN0IENST1BESVZBOiBodHRwczovL2NvcmRpcy5ldXJvcGEu
+ZXUvcHJvamVjdC9pZC8xMDEwMDA4NDcNCltsb2dvX0NST1BESVZBXQ0KDQoNCg0K
+
+--_002_b103e285509f4582bc49de9058f84180agroscopeadminch_
+Content-Type: image/jpeg; name="image001.jpg"
+Content-Description: image001.jpg
+Content-Disposition: inline; filename="image001.jpg"; size=1999;
+	creation-date="Mon, 26 May 2025 16:54:41 GMT";
+	modification-date="Mon, 26 May 2025 16:54:42 GMT"
+Content-ID: <image001.jpg@01DBCE6F.A2D3E8D0>
+Content-Transfer-Encoding: base64
+
+/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIf
+IiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7
+Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAA7AGEDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD2aiis
+3B1aRskixQ4wD/ryOuf9n+f06hMpWJDqXmsVsoGuiDguDtjH/Aj1/DNQ3dxqltbPcH7IoXHyAM3U
+gdcj19Ke2oBrn7Bp8aPIi8s3EcYHGOOpHoP0qvqttd/2bK818zcr8kcaqv3h65P60GMpPlbTv6Fz
+dqkeSY7aceiM0Z/XIp8GoRSyiGRXgn/55SjBP0PQ/hUZg1CL5obxZv8AYnQDP/Alxj8jSCSDUVa0
+u4DHMvzGNjyPRlYdfqP0oLu0/wDMv0VHBG0UKxvK0rKMb2AyfrUlBqgooooAKKKKAG7F/uj8qKdR
+QBT1N3+zrBGxWS5cRBh1AP3j+ABpl3lI4NPtT5Rl+UFf+WcYHJHv0A9zTNRmMOo2TeVJLgSHbGMn
+OAM/qaLSb7Vq00jQyxGOBVVZRg8s2T+g/KgwbvJr5fqRxm2ttfhtImRNtoQsYP8AtA/0JqDxHJ5k
+LwOzLDGiySbTgtlwFH8z+Aqg8gNwZyAJjbvcb+4cPuUf98qR9Kta9BdXV6sVqmfMgDNn/ZbAH/j+
+fwoMJTvTkkjX06SR4HilYvJBIY2Y9Wx0P5EVPcFkgkkjXdIqEqMdTjpVDQhMLOU3H+tMzKx9duFz
+/wCO1Yl1K2jkMSs00q9UhQuR9cdPxoOmMlyJswNDtrO9tItRu7+U3hlyxM5Xad3C49OnHvWZI8xv
+ZxG0scz6gY47kzEInOdpFdLYW+j6nK1/DYoJY5MF3jwdw5z+vWluv7Eh02Sa4hj+zTSkvmMnc+SM
+49cg0jjdG8FqtOvfzM7ZFquu38Wp3Lxrb4EEQlKDbj73v2/Os57q4uNFtVkkmnRNQ8pGViGlTHTP
+6VvI/h7WBs8uGVrdOFeMqyqPY84qWO60a8FjCqoyvl7VTGQMrnpxwaBunzfaWv46/psN8PW95bpd
+faEligeXNvFK+5kX3OTWxVM6rZK10pm/49BmY7Thfx9amtbqG9tkuLd98UgypximddPliuVO5NRR
+RQalG+/d3VncH7qymNvYMMD9dtE5+z6rDM3CToYSfRgcr/7MPyqzc26XVtJBJna64yOo9xVSEi/t
+pLG84njwJMcE/wB11+uMj0P0oMpLUxpfDszJJciRhJvYKn+zvwP/ABzd+ddPtXfvwN2MZ9qpR3rW
+hEGokKeiXGMJJ9f7rex/Cp764Nvp806EFlQlfr2/WgmnGEE2vmUZJ/tuo/YI90dsA7SSIcGRgRlQ
+ew55P4VnW1xbiOa1bfBYJNIxaOJiJV3EgAgYC46nvT5oDJHC0E0UVnbRmJ5JmKi4yQWwRzjI5Pfm
+rdsLzU1Ec6RRWK4x5aspmA7YPRf5/Sgx1lLz/r8CxYOtvpst5IuxJC023GNqY+Uf98gVm6vZXDeF
+oIY4Xlm3o7Ii5OScn+dadyRfXQso+YYiGuD245CfjwT7fWtCg2dNTi4+Vv8AM5t47vVNYjvhYTWs
+VvA6kygBpCQQBioY9Nux4UsnSB1vbJ/NRCvzfeORj3FdVRQT9XTu29/+B/kck2nag2mW9osDGe+n
+Nxdu4IVR1CsfyrR0CG8sLi7sbiDZFv8ANiaMExjd1UE+lblFA40FGSknt/X/AAQooooOgKrXdmLg
+rIjmGeP7kqjkexHce1WaKBNJqzM83zwqY9RtygxgyopeNv6j8fzrOW30zUrhlhMUVmpw4STb5x9N
+oPC++Oa6GoZLS2lbdJbxOfVkBoMpU3LfUoKmh2ThgYPMXhct5jD6Dk/lUxlvL75YEe1hPWaQfOR/
+sr2+p/KrcUEMP+qhSP8A3VAqSgpQ6behFb28VrCIoV2qPfJJ7knualoooLStogooooGFFFFABRRR
+QB//2Q==
+
+--_002_b103e285509f4582bc49de9058f84180agroscopeadminch_--

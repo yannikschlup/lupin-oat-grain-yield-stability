@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+title: Repository for Mixed cropping of narrow‑leaved lupin with oat enhances grain‑yield stability across five European locations
+version: 1.0.0
+date-released: 2026-00-00
+doi: 10.5281/zenodo.XXXXXXXX
+
+authors:
+  - given-names: Lukas
+    family-names: Graz
+    orcid: https://orcid.org/0009-0003-5147-8370
+    affiliation:
+      - name: ETH Zurich, Seminar for Statistics, Department of Mathematics
+        city: Zurich
+        country: Switzerland
+
+  - given-names: Yannik
+    family-names: Schlup
+    orcid: https://orcid.org/0000-0002-0016-3171
+    affiliation:
+      - name: ETH Zürich, Sustainable Agroecosystems, Department of Environmental Systems Science
+        city: Zürich
+        country: Switzerland
